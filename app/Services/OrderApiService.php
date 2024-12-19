@@ -11,7 +11,7 @@ class OrderApiService
 
     public function __construct()
     {
-        $this->baseUrl = 'http://localhost:4040';
+        $this->baseUrl = 'http://localhost:5050/api';
     }
 
     public function getAllOrders()

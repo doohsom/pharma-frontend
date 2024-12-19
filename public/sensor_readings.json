@@ -1,0 +1,1354 @@
+{
+    "sensor_readings": [
+        {
+            "reading_id": "READING1",
+            "sensor_id": "SENSOR1",
+            "batch_id": "BATCH1",
+            "reading_type": "temperature",
+            "value": 5.22,
+            "has_excursion": false,
+            "reading_timestamp": "2024-12-18T00:00:00Z"
+        },
+        {
+            "reading_id": "READING2",
+            "sensor_id": "SENSOR1",
+            "batch_id": "BATCH1",
+            "reading_type": "temperature",
+            "value": 5.03,
+            "has_excursion": false,
+            "reading_timestamp": "2024-12-18T00:30:00Z"
+        },
+        {
+            "reading_id": "READING3",
+            "sensor_id": "SENSOR1",
+            "batch_id": "BATCH1",
+            "reading_type": "temperature",
+            "value": 5.6,
+            "has_excursion": false,
+            "reading_timestamp": "2024-12-18T01:00:00Z"
+        },
+        {
+            "reading_id": "READING4",
+            "sensor_id": "SENSOR1",
+            "batch_id": "BATCH1",
+            "reading_type": "temperature",
+            "value": 5.48,
+            "has_excursion": false,
+            "reading_timestamp": "2024-12-18T01:30:00Z"
+        },
+        {
+            "reading_id": "READING5",
+            "sensor_id": "SENSOR1",
+            "batch_id": "BATCH1",
+            "reading_type": "temperature",
+            "value": 5.87,
+            "has_excursion": false,
+            "reading_timestamp": "2024-12-18T02:00:00Z"
+        },
+        {
+            "reading_id": "READING6",
+            "sensor_id": "SENSOR1",
+            "batch_id": "BATCH1",
+            "reading_type": "temperature",
+            "value": 5.99,
+            "has_excursion": false,
+            "reading_timestamp": "2024-12-18T02:30:00Z"
+        },
+        {
+            "reading_id": "READING7",
+            "sensor_id": "SENSOR1",
+            "batch_id": "BATCH1",
+            "reading_type": "temperature",
+            "value": 5.84,
+            "has_excursion": false,
+            "reading_timestamp": "2024-12-18T03:00:00Z"
+        },
+        {
+            "reading_id": "READING8",
+            "sensor_id": "SENSOR1",
+            "batch_id": "BATCH1",
+            "reading_type": "temperature",
+            "value": 6.13,
+            "has_excursion": false,
+            "reading_timestamp": "2024-12-18T03:30:00Z"
+        },
+        {
+            "reading_id": "READING9",
+            "sensor_id": "SENSOR1",
+            "batch_id": "BATCH1",
+            "reading_type": "temperature",
+            "value": 6.4,
+            "has_excursion": false,
+            "reading_timestamp": "2024-12-18T04:00:00Z"
+        },
+        {
+            "reading_id": "READING10",
+            "sensor_id": "SENSOR1",
+            "batch_id": "BATCH1",
+            "reading_type": "temperature",
+            "value": 6.2,
+            "has_excursion": false,
+            "reading_timestamp": "2024-12-18T04:30:00Z"
+        },
+        {
+            "reading_id": "READING11",
+            "sensor_id": "SENSOR1",
+            "batch_id": "BATCH1",
+            "reading_type": "temperature",
+            "value": 6.52,
+            "has_excursion": false,
+            "reading_timestamp": "2024-12-18T05:00:00Z"
+        },
+        {
+            "reading_id": "READING12",
+            "sensor_id": "SENSOR1",
+            "batch_id": "BATCH1",
+            "reading_type": "temperature",
+            "value": 6.3,
+            "has_excursion": false,
+            "reading_timestamp": "2024-12-18T05:30:00Z"
+        },
+        {
+            "reading_id": "READING13",
+            "sensor_id": "SENSOR1",
+            "batch_id": "BATCH1",
+            "reading_type": "temperature",
+            "value": 6.46,
+            "has_excursion": false,
+            "reading_timestamp": "2024-12-18T06:00:00Z"
+        },
+        {
+            "reading_id": "READING14",
+            "sensor_id": "SENSOR1",
+            "batch_id": "BATCH1",
+            "reading_type": "temperature",
+            "value": 6.48,
+            "has_excursion": false,
+            "reading_timestamp": "2024-12-18T06:30:00Z"
+        },
+        {
+            "reading_id": "READING15",
+            "sensor_id": "SENSOR1",
+            "batch_id": "BATCH1",
+            "reading_type": "temperature",
+            "value": 6.73,
+            "has_excursion": false,
+            "reading_timestamp": "2024-12-18T07:00:00Z"
+        },
+        {
+            "reading_id": "READING16",
+            "sensor_id": "SENSOR1",
+            "batch_id": "BATCH1",
+            "reading_type": "temperature",
+            "value": 6.34,
+            "has_excursion": false,
+            "reading_timestamp": "2024-12-18T07:30:00Z"
+        },
+        {
+            "reading_id": "READING17",
+            "sensor_id": "SENSOR1",
+            "batch_id": "BATCH1",
+            "reading_type": "temperature",
+            "value": 6.44,
+            "has_excursion": false,
+            "reading_timestamp": "2024-12-18T08:00:00Z"
+        },
+        {
+            "reading_id": "READING18",
+            "sensor_id": "SENSOR1",
+            "batch_id": "BATCH1",
+            "reading_type": "temperature",
+            "value": 6.03,
+            "has_excursion": false,
+            "reading_timestamp": "2024-12-18T08:30:00Z"
+        },
+        {
+            "reading_id": "READING19",
+            "sensor_id": "SENSOR1",
+            "batch_id": "BATCH1",
+            "reading_type": "temperature",
+            "value": 6.04,
+            "has_excursion": false,
+            "reading_timestamp": "2024-12-18T09:00:00Z"
+        },
+        {
+            "reading_id": "READING20",
+            "sensor_id": "SENSOR1",
+            "batch_id": "BATCH1",
+            "reading_type": "temperature",
+            "value": 5,
+            "has_excursion": true,
+            "reading_timestamp": "2024-12-18T09:30:00Z"
+        },
+        {
+            "reading_id": "READING21",
+            "sensor_id": "SENSOR1",
+            "batch_id": "BATCH1",
+            "reading_type": "temperature",
+            "value": 5.46,
+            "has_excursion": false,
+            "reading_timestamp": "2024-12-18T10:00:00Z"
+        },
+        {
+            "reading_id": "READING22",
+            "sensor_id": "SENSOR1",
+            "batch_id": "BATCH1",
+            "reading_type": "temperature",
+            "value": 5.71,
+            "has_excursion": false,
+            "reading_timestamp": "2024-12-18T10:30:00Z"
+        },
+        {
+            "reading_id": "READING23",
+            "sensor_id": "SENSOR1",
+            "batch_id": "BATCH1",
+            "reading_type": "temperature",
+            "value": 5.54,
+            "has_excursion": false,
+            "reading_timestamp": "2024-12-18T11:00:00Z"
+        },
+        {
+            "reading_id": "READING24",
+            "sensor_id": "SENSOR1",
+            "batch_id": "BATCH1",
+            "reading_type": "temperature",
+            "value": 5.1,
+            "has_excursion": false,
+            "reading_timestamp": "2024-12-18T11:30:00Z"
+        },
+        {
+            "reading_id": "READING25",
+            "sensor_id": "SENSOR1",
+            "batch_id": "BATCH1",
+            "reading_type": "temperature",
+            "value": 4.71,
+            "has_excursion": false,
+            "reading_timestamp": "2024-12-18T12:00:00Z"
+        },
+        {
+            "reading_id": "READING26",
+            "sensor_id": "SENSOR1",
+            "batch_id": "BATCH1",
+            "reading_type": "temperature",
+            "value": 4.84,
+            "has_excursion": false,
+            "reading_timestamp": "2024-12-18T12:30:00Z"
+        },
+        {
+            "reading_id": "READING27",
+            "sensor_id": "SENSOR1",
+            "batch_id": "BATCH1",
+            "reading_type": "temperature",
+            "value": 4.41,
+            "has_excursion": false,
+            "reading_timestamp": "2024-12-18T13:00:00Z"
+        },
+        {
+            "reading_id": "READING28",
+            "sensor_id": "SENSOR1",
+            "batch_id": "BATCH1",
+            "reading_type": "temperature",
+            "value": 4.47,
+            "has_excursion": false,
+            "reading_timestamp": "2024-12-18T13:30:00Z"
+        },
+        {
+            "reading_id": "READING29",
+            "sensor_id": "SENSOR1",
+            "batch_id": "BATCH1",
+            "reading_type": "temperature",
+            "value": 4.38,
+            "has_excursion": false,
+            "reading_timestamp": "2024-12-18T14:00:00Z"
+        },
+        {
+            "reading_id": "READING30",
+            "sensor_id": "SENSOR1",
+            "batch_id": "BATCH1",
+            "reading_type": "temperature",
+            "value": 4.34,
+            "has_excursion": false,
+            "reading_timestamp": "2024-12-18T14:30:00Z"
+        },
+        {
+            "reading_id": "READING31",
+            "sensor_id": "SENSOR1",
+            "batch_id": "BATCH1",
+            "reading_type": "temperature",
+            "value": 3.99,
+            "has_excursion": false,
+            "reading_timestamp": "2024-12-18T15:00:00Z"
+        },
+        {
+            "reading_id": "READING32",
+            "sensor_id": "SENSOR1",
+            "batch_id": "BATCH1",
+            "reading_type": "temperature",
+            "value": 4.16,
+            "has_excursion": false,
+            "reading_timestamp": "2024-12-18T15:30:00Z"
+        },
+        {
+            "reading_id": "READING33",
+            "sensor_id": "SENSOR1",
+            "batch_id": "BATCH1",
+            "reading_type": "temperature",
+            "value": 3.63,
+            "has_excursion": false,
+            "reading_timestamp": "2024-12-18T16:00:00Z"
+        },
+        {
+            "reading_id": "READING34",
+            "sensor_id": "SENSOR1",
+            "batch_id": "BATCH1",
+            "reading_type": "temperature",
+            "value": 3.7,
+            "has_excursion": false,
+            "reading_timestamp": "2024-12-18T16:30:00Z"
+        },
+        {
+            "reading_id": "READING35",
+            "sensor_id": "SENSOR1",
+            "batch_id": "BATCH1",
+            "reading_type": "temperature",
+            "value": 3.51,
+            "has_excursion": false,
+            "reading_timestamp": "2024-12-18T17:00:00Z"
+        },
+        {
+            "reading_id": "READING36",
+            "sensor_id": "SENSOR1",
+            "batch_id": "BATCH1",
+            "reading_type": "temperature",
+            "value": 3.64,
+            "has_excursion": false,
+            "reading_timestamp": "2024-12-18T17:30:00Z"
+        },
+        {
+            "reading_id": "READING37",
+            "sensor_id": "SENSOR1",
+            "batch_id": "BATCH1",
+            "reading_type": "temperature",
+            "value": 3.7,
+            "has_excursion": false,
+            "reading_timestamp": "2024-12-18T18:00:00Z"
+        },
+        {
+            "reading_id": "READING38",
+            "sensor_id": "SENSOR1",
+            "batch_id": "BATCH1",
+            "reading_type": "temperature",
+            "value": 3.49,
+            "has_excursion": false,
+            "reading_timestamp": "2024-12-18T18:30:00Z"
+        },
+        {
+            "reading_id": "READING39",
+            "sensor_id": "SENSOR1",
+            "batch_id": "BATCH1",
+            "reading_type": "temperature",
+            "value": 3.63,
+            "has_excursion": false,
+            "reading_timestamp": "2024-12-18T19:00:00Z"
+        },
+        {
+            "reading_id": "READING40",
+            "sensor_id": "SENSOR1",
+            "batch_id": "BATCH1",
+            "reading_type": "temperature",
+            "value": 3.32,
+            "has_excursion": false,
+            "reading_timestamp": "2024-12-18T19:30:00Z"
+        },
+        {
+            "reading_id": "READING41",
+            "sensor_id": "SENSOR1",
+            "batch_id": "BATCH1",
+            "reading_type": "temperature",
+            "value": 3.41,
+            "has_excursion": false,
+            "reading_timestamp": "2024-12-18T20:00:00Z"
+        },
+        {
+            "reading_id": "READING42",
+            "sensor_id": "SENSOR1",
+            "batch_id": "BATCH1",
+            "reading_type": "temperature",
+            "value": 3.72,
+            "has_excursion": false,
+            "reading_timestamp": "2024-12-18T20:30:00Z"
+        },
+        {
+            "reading_id": "READING43",
+            "sensor_id": "SENSOR1",
+            "batch_id": "BATCH1",
+            "reading_type": "temperature",
+            "value": 4.17,
+            "has_excursion": false,
+            "reading_timestamp": "2024-12-18T21:00:00Z"
+        },
+        {
+            "reading_id": "READING44",
+            "sensor_id": "SENSOR1",
+            "batch_id": "BATCH1",
+            "reading_type": "temperature",
+            "value": 4.02,
+            "has_excursion": false,
+            "reading_timestamp": "2024-12-18T21:30:00Z"
+        },
+        {
+            "reading_id": "READING45",
+            "sensor_id": "SENSOR1",
+            "batch_id": "BATCH1",
+            "reading_type": "temperature",
+            "value": 4.44,
+            "has_excursion": false,
+            "reading_timestamp": "2024-12-18T22:00:00Z"
+        },
+        {
+            "reading_id": "READING46",
+            "sensor_id": "SENSOR1",
+            "batch_id": "BATCH1",
+            "reading_type": "temperature",
+            "value": 4.54,
+            "has_excursion": false,
+            "reading_timestamp": "2024-12-18T22:30:00Z"
+        },
+        {
+            "reading_id": "READING47",
+            "sensor_id": "SENSOR1",
+            "batch_id": "BATCH1",
+            "reading_type": "temperature",
+            "value": 11,
+            "has_excursion": true,
+            "reading_timestamp": "2024-12-18T23:00:00Z"
+        },
+        {
+            "reading_id": "READING48",
+            "sensor_id": "SENSOR1",
+            "batch_id": "BATCH1",
+            "reading_type": "temperature",
+            "value": 4.5,
+            "has_excursion": false,
+            "reading_timestamp": "2024-12-18T23:30:00Z"
+        },
+        {
+            "reading_id": "READING49",
+            "sensor_id": "SENSOR1",
+            "batch_id": "BATCH1",
+            "reading_type": "temperature",
+            "value": 4.99,
+            "has_excursion": false,
+            "reading_timestamp": "2024-12-19T00:00:00Z"
+        },
+        {
+            "reading_id": "READING50",
+            "sensor_id": "SENSOR1",
+            "batch_id": "BATCH1",
+            "reading_type": "temperature",
+            "value": 4.73,
+            "has_excursion": false,
+            "reading_timestamp": "2024-12-19T00:30:00Z"
+        },
+        {
+            "reading_id": "READING51",
+            "sensor_id": "SENSOR2",
+            "batch_id": "BATCH1",
+            "reading_type": "humidity",
+            "value": 47.17,
+            "has_excursion": false,
+            "reading_timestamp": "2024-12-18T00:00:00Z"
+        },
+        {
+            "reading_id": "READING52",
+            "sensor_id": "SENSOR2",
+            "batch_id": "BATCH1",
+            "reading_type": "humidity",
+            "value": 47.29,
+            "has_excursion": false,
+            "reading_timestamp": "2024-12-18T00:30:00Z"
+        },
+        {
+            "reading_id": "READING53",
+            "sensor_id": "SENSOR2",
+            "batch_id": "BATCH1",
+            "reading_type": "humidity",
+            "value": 48.36,
+            "has_excursion": false,
+            "reading_timestamp": "2024-12-18T01:00:00Z"
+        },
+        {
+            "reading_id": "READING54",
+            "sensor_id": "SENSOR2",
+            "batch_id": "BATCH1",
+            "reading_type": "humidity",
+            "value": 50.15,
+            "has_excursion": false,
+            "reading_timestamp": "2024-12-18T01:30:00Z"
+        },
+        {
+            "reading_id": "READING55",
+            "sensor_id": "SENSOR2",
+            "batch_id": "BATCH1",
+            "reading_type": "humidity",
+            "value": 53.59,
+            "has_excursion": false,
+            "reading_timestamp": "2024-12-18T02:00:00Z"
+        },
+        {
+            "reading_id": "READING56",
+            "sensor_id": "SENSOR2",
+            "batch_id": "BATCH1",
+            "reading_type": "humidity",
+            "value": 51.63,
+            "has_excursion": false,
+            "reading_timestamp": "2024-12-18T02:30:00Z"
+        },
+        {
+            "reading_id": "READING57",
+            "sensor_id": "SENSOR2",
+            "batch_id": "BATCH1",
+            "reading_type": "humidity",
+            "value": 54.6,
+            "has_excursion": false,
+            "reading_timestamp": "2024-12-18T03:00:00Z"
+        },
+        {
+            "reading_id": "READING58",
+            "sensor_id": "SENSOR2",
+            "batch_id": "BATCH1",
+            "reading_type": "humidity",
+            "value": 55.07,
+            "has_excursion": false,
+            "reading_timestamp": "2024-12-18T03:30:00Z"
+        },
+        {
+            "reading_id": "READING59",
+            "sensor_id": "SENSOR2",
+            "batch_id": "BATCH1",
+            "reading_type": "humidity",
+            "value": 55.52,
+            "has_excursion": false,
+            "reading_timestamp": "2024-12-18T04:00:00Z"
+        },
+        {
+            "reading_id": "READING60",
+            "sensor_id": "SENSOR2",
+            "batch_id": "BATCH1",
+            "reading_type": "humidity",
+            "value": 55.88,
+            "has_excursion": false,
+            "reading_timestamp": "2024-12-18T04:30:00Z"
+        },
+        {
+            "reading_id": "READING61",
+            "sensor_id": "SENSOR2",
+            "batch_id": "BATCH1",
+            "reading_type": "humidity",
+            "value": 54.57,
+            "has_excursion": false,
+            "reading_timestamp": "2024-12-18T05:00:00Z"
+        },
+        {
+            "reading_id": "READING62",
+            "sensor_id": "SENSOR2",
+            "batch_id": "BATCH1",
+            "reading_type": "humidity",
+            "value": 55.95,
+            "has_excursion": false,
+            "reading_timestamp": "2024-12-18T05:30:00Z"
+        },
+        {
+            "reading_id": "READING63",
+            "sensor_id": "SENSOR2",
+            "batch_id": "BATCH1",
+            "reading_type": "humidity",
+            "value": 55.04,
+            "has_excursion": false,
+            "reading_timestamp": "2024-12-18T06:00:00Z"
+        },
+        {
+            "reading_id": "READING64",
+            "sensor_id": "SENSOR2",
+            "batch_id": "BATCH1",
+            "reading_type": "humidity",
+            "value": 57.69,
+            "has_excursion": false,
+            "reading_timestamp": "2024-12-18T06:30:00Z"
+        },
+        {
+            "reading_id": "READING65",
+            "sensor_id": "SENSOR2",
+            "batch_id": "BATCH1",
+            "reading_type": "humidity",
+            "value": 55.76,
+            "has_excursion": false,
+            "reading_timestamp": "2024-12-18T07:00:00Z"
+        },
+        {
+            "reading_id": "READING66",
+            "sensor_id": "SENSOR2",
+            "batch_id": "BATCH1",
+            "reading_type": "humidity",
+            "value": 54.71,
+            "has_excursion": false,
+            "reading_timestamp": "2024-12-18T07:30:00Z"
+        },
+        {
+            "reading_id": "READING67",
+            "sensor_id": "SENSOR2",
+            "batch_id": "BATCH1",
+            "reading_type": "humidity",
+            "value": 53.59,
+            "has_excursion": false,
+            "reading_timestamp": "2024-12-18T08:00:00Z"
+        },
+        {
+            "reading_id": "READING68",
+            "sensor_id": "SENSOR2",
+            "batch_id": "BATCH1",
+            "reading_type": "humidity",
+            "value": 55.34,
+            "has_excursion": false,
+            "reading_timestamp": "2024-12-18T08:30:00Z"
+        },
+        {
+            "reading_id": "READING69",
+            "sensor_id": "SENSOR2",
+            "batch_id": "BATCH1",
+            "reading_type": "humidity",
+            "value": 53.07,
+            "has_excursion": false,
+            "reading_timestamp": "2024-12-18T09:00:00Z"
+        },
+        {
+            "reading_id": "READING70",
+            "sensor_id": "SENSOR2",
+            "batch_id": "BATCH1",
+            "reading_type": "humidity",
+            "value": 52.13,
+            "has_excursion": false,
+            "reading_timestamp": "2024-12-18T09:30:00Z"
+        },
+        {
+            "reading_id": "READING71",
+            "sensor_id": "SENSOR2",
+            "batch_id": "BATCH1",
+            "reading_type": "humidity",
+            "value": 50.46,
+            "has_excursion": false,
+            "reading_timestamp": "2024-12-18T10:00:00Z"
+        },
+        {
+            "reading_id": "READING72",
+            "sensor_id": "SENSOR2",
+            "batch_id": "BATCH1",
+            "reading_type": "humidity",
+            "value": 50.32,
+            "has_excursion": false,
+            "reading_timestamp": "2024-12-18T10:30:00Z"
+        },
+        {
+            "reading_id": "READING73",
+            "sensor_id": "SENSOR2",
+            "batch_id": "BATCH1",
+            "reading_type": "humidity",
+            "value": 48.26,
+            "has_excursion": false,
+            "reading_timestamp": "2024-12-18T11:00:00Z"
+        },
+        {
+            "reading_id": "READING74",
+            "sensor_id": "SENSOR2",
+            "batch_id": "BATCH1",
+            "reading_type": "humidity",
+            "value": 50.08,
+            "has_excursion": false,
+            "reading_timestamp": "2024-12-18T11:30:00Z"
+        },
+        {
+            "reading_id": "READING75",
+            "sensor_id": "SENSOR2",
+            "batch_id": "BATCH1",
+            "reading_type": "humidity",
+            "value": 47.96,
+            "has_excursion": false,
+            "reading_timestamp": "2024-12-18T12:00:00Z"
+        },
+        {
+            "reading_id": "READING76",
+            "sensor_id": "SENSOR2",
+            "batch_id": "BATCH1",
+            "reading_type": "humidity",
+            "value": 47.26,
+            "has_excursion": false,
+            "reading_timestamp": "2024-12-18T12:30:00Z"
+        },
+        {
+            "reading_id": "READING77",
+            "sensor_id": "SENSOR2",
+            "batch_id": "BATCH1",
+            "reading_type": "humidity",
+            "value": 45.85,
+            "has_excursion": false,
+            "reading_timestamp": "2024-12-18T13:00:00Z"
+        },
+        {
+            "reading_id": "READING78",
+            "sensor_id": "SENSOR2",
+            "batch_id": "BATCH1",
+            "reading_type": "humidity",
+            "value": 46.06,
+            "has_excursion": false,
+            "reading_timestamp": "2024-12-18T13:30:00Z"
+        },
+        {
+            "reading_id": "READING79",
+            "sensor_id": "SENSOR2",
+            "batch_id": "BATCH1",
+            "reading_type": "humidity",
+            "value": 42.69,
+            "has_excursion": false,
+            "reading_timestamp": "2024-12-18T14:00:00Z"
+        },
+        {
+            "reading_id": "READING80",
+            "sensor_id": "SENSOR2",
+            "batch_id": "BATCH1",
+            "reading_type": "humidity",
+            "value": 43.55,
+            "has_excursion": false,
+            "reading_timestamp": "2024-12-18T14:30:00Z"
+        },
+        {
+            "reading_id": "READING81",
+            "sensor_id": "SENSOR2",
+            "batch_id": "BATCH1",
+            "reading_type": "humidity",
+            "value": 40.25,
+            "has_excursion": false,
+            "reading_timestamp": "2024-12-18T15:00:00Z"
+        },
+        {
+            "reading_id": "READING82",
+            "sensor_id": "SENSOR2",
+            "batch_id": "BATCH1",
+            "reading_type": "humidity",
+            "value": 43.03,
+            "has_excursion": false,
+            "reading_timestamp": "2024-12-18T15:30:00Z"
+        },
+        {
+            "reading_id": "READING83",
+            "sensor_id": "SENSOR2",
+            "batch_id": "BATCH1",
+            "reading_type": "humidity",
+            "value": 38.29,
+            "has_excursion": false,
+            "reading_timestamp": "2024-12-18T16:00:00Z"
+        },
+        {
+            "reading_id": "READING84",
+            "sensor_id": "SENSOR2",
+            "batch_id": "BATCH1",
+            "reading_type": "humidity",
+            "value": 41.23,
+            "has_excursion": false,
+            "reading_timestamp": "2024-12-18T16:30:00Z"
+        },
+        {
+            "reading_id": "READING85",
+            "sensor_id": "SENSOR2",
+            "batch_id": "BATCH1",
+            "reading_type": "humidity",
+            "value": 39.63,
+            "has_excursion": false,
+            "reading_timestamp": "2024-12-18T17:00:00Z"
+        },
+        {
+            "reading_id": "READING86",
+            "sensor_id": "SENSOR2",
+            "batch_id": "BATCH1",
+            "reading_type": "humidity",
+            "value": 38.73,
+            "has_excursion": false,
+            "reading_timestamp": "2024-12-18T17:30:00Z"
+        },
+        {
+            "reading_id": "READING87",
+            "sensor_id": "SENSOR2",
+            "batch_id": "BATCH1",
+            "reading_type": "humidity",
+            "value": 38.03,
+            "has_excursion": false,
+            "reading_timestamp": "2024-12-18T18:00:00Z"
+        },
+        {
+            "reading_id": "READING88",
+            "sensor_id": "SENSOR2",
+            "batch_id": "BATCH1",
+            "reading_type": "humidity",
+            "value": 39.87,
+            "has_excursion": false,
+            "reading_timestamp": "2024-12-18T18:30:00Z"
+        },
+        {
+            "reading_id": "READING89",
+            "sensor_id": "SENSOR2",
+            "batch_id": "BATCH1",
+            "reading_type": "humidity",
+            "value": 37.51,
+            "has_excursion": false,
+            "reading_timestamp": "2024-12-18T19:00:00Z"
+        },
+        {
+            "reading_id": "READING90",
+            "sensor_id": "SENSOR2",
+            "batch_id": "BATCH1",
+            "reading_type": "humidity",
+            "value": 38.89,
+            "has_excursion": false,
+            "reading_timestamp": "2024-12-18T19:30:00Z"
+        },
+        {
+            "reading_id": "READING91",
+            "sensor_id": "SENSOR2",
+            "batch_id": "BATCH1",
+            "reading_type": "humidity",
+            "value": 39.71,
+            "has_excursion": false,
+            "reading_timestamp": "2024-12-18T20:00:00Z"
+        },
+        {
+            "reading_id": "READING92",
+            "sensor_id": "SENSOR2",
+            "batch_id": "BATCH1",
+            "reading_type": "humidity",
+            "value": 39.76,
+            "has_excursion": false,
+            "reading_timestamp": "2024-12-18T20:30:00Z"
+        },
+        {
+            "reading_id": "READING93",
+            "sensor_id": "SENSOR2",
+            "batch_id": "BATCH1",
+            "reading_type": "humidity",
+            "value": 39.97,
+            "has_excursion": false,
+            "reading_timestamp": "2024-12-18T21:00:00Z"
+        },
+        {
+            "reading_id": "READING94",
+            "sensor_id": "SENSOR2",
+            "batch_id": "BATCH1",
+            "reading_type": "humidity",
+            "value": 41.63,
+            "has_excursion": false,
+            "reading_timestamp": "2024-12-18T21:30:00Z"
+        },
+        {
+            "reading_id": "READING95",
+            "sensor_id": "SENSOR2",
+            "batch_id": "BATCH1",
+            "reading_type": "humidity",
+            "value": 43.18,
+            "has_excursion": false,
+            "reading_timestamp": "2024-12-18T22:00:00Z"
+        },
+        {
+            "reading_id": "READING96",
+            "sensor_id": "SENSOR2",
+            "batch_id": "BATCH1",
+            "reading_type": "humidity",
+            "value": 42.16,
+            "has_excursion": false,
+            "reading_timestamp": "2024-12-18T22:30:00Z"
+        },
+        {
+            "reading_id": "READING97",
+            "sensor_id": "SENSOR2",
+            "batch_id": "BATCH1",
+            "reading_type": "humidity",
+            "value": 44.43,
+            "has_excursion": false,
+            "reading_timestamp": "2024-12-18T23:00:00Z"
+        },
+        {
+            "reading_id": "READING98",
+            "sensor_id": "SENSOR2",
+            "batch_id": "BATCH1",
+            "reading_type": "humidity",
+            "value": 44.85,
+            "has_excursion": false,
+            "reading_timestamp": "2024-12-18T23:30:00Z"
+        },
+        {
+            "reading_id": "READING99",
+            "sensor_id": "SENSOR2",
+            "batch_id": "BATCH1",
+            "reading_type": "humidity",
+            "value": 46.64,
+            "has_excursion": false,
+            "reading_timestamp": "2024-12-19T00:00:00Z"
+        },
+        {
+            "reading_id": "READING100",
+            "sensor_id": "SENSOR2",
+            "batch_id": "BATCH1",
+            "reading_type": "humidity",
+            "value": 45.87,
+            "has_excursion": false,
+            "reading_timestamp": "2024-12-19T00:30:00Z"
+        },
+        {
+            "reading_id": "READING101",
+            "sensor_id": "SENSOR3",
+            "batch_id": "BATCH1",
+            "reading_type": "pressure",
+            "value": 999.22,
+            "has_excursion": false,
+            "reading_timestamp": "2024-12-18T00:00:00Z"
+        },
+        {
+            "reading_id": "READING102",
+            "sensor_id": "SENSOR3",
+            "batch_id": "BATCH1",
+            "reading_type": "pressure",
+            "value": 1000,
+            "has_excursion": true,
+            "reading_timestamp": "2024-12-18T00:30:00Z"
+        },
+        {
+            "reading_id": "READING103",
+            "sensor_id": "SENSOR3",
+            "batch_id": "BATCH1",
+            "reading_type": "pressure",
+            "value": 1003.99,
+            "has_excursion": false,
+            "reading_timestamp": "2024-12-18T01:00:00Z"
+        },
+        {
+            "reading_id": "READING104",
+            "sensor_id": "SENSOR3",
+            "batch_id": "BATCH1",
+            "reading_type": "pressure",
+            "value": 1003.65,
+            "has_excursion": false,
+            "reading_timestamp": "2024-12-18T01:30:00Z"
+        },
+        {
+            "reading_id": "READING105",
+            "sensor_id": "SENSOR3",
+            "batch_id": "BATCH1",
+            "reading_type": "pressure",
+            "value": 1004.26,
+            "has_excursion": false,
+            "reading_timestamp": "2024-12-18T02:00:00Z"
+        },
+        {
+            "reading_id": "READING106",
+            "sensor_id": "SENSOR3",
+            "batch_id": "BATCH1",
+            "reading_type": "pressure",
+            "value": 1005.78,
+            "has_excursion": false,
+            "reading_timestamp": "2024-12-18T02:30:00Z"
+        },
+        {
+            "reading_id": "READING107",
+            "sensor_id": "SENSOR3",
+            "batch_id": "BATCH1",
+            "reading_type": "pressure",
+            "value": 1005.91,
+            "has_excursion": false,
+            "reading_timestamp": "2024-12-18T03:00:00Z"
+        },
+        {
+            "reading_id": "READING108",
+            "sensor_id": "SENSOR3",
+            "batch_id": "BATCH1",
+            "reading_type": "pressure",
+            "value": 1009.05,
+            "has_excursion": false,
+            "reading_timestamp": "2024-12-18T03:30:00Z"
+        },
+        {
+            "reading_id": "READING109",
+            "sensor_id": "SENSOR3",
+            "batch_id": "BATCH1",
+            "reading_type": "pressure",
+            "value": 1009.44,
+            "has_excursion": false,
+            "reading_timestamp": "2024-12-18T04:00:00Z"
+        },
+        {
+            "reading_id": "READING110",
+            "sensor_id": "SENSOR3",
+            "batch_id": "BATCH1",
+            "reading_type": "pressure",
+            "value": 1008.92,
+            "has_excursion": false,
+            "reading_timestamp": "2024-12-18T04:30:00Z"
+        },
+        {
+            "reading_id": "READING111",
+            "sensor_id": "SENSOR3",
+            "batch_id": "BATCH1",
+            "reading_type": "pressure",
+            "value": 1007.86,
+            "has_excursion": false,
+            "reading_timestamp": "2024-12-18T05:00:00Z"
+        },
+        {
+            "reading_id": "READING112",
+            "sensor_id": "SENSOR3",
+            "batch_id": "BATCH1",
+            "reading_type": "pressure",
+            "value": 1009.24,
+            "has_excursion": false,
+            "reading_timestamp": "2024-12-18T05:30:00Z"
+        },
+        {
+            "reading_id": "READING113",
+            "sensor_id": "SENSOR3",
+            "batch_id": "BATCH1",
+            "reading_type": "pressure",
+            "value": 1011.62,
+            "has_excursion": false,
+            "reading_timestamp": "2024-12-18T06:00:00Z"
+        },
+        {
+            "reading_id": "READING114",
+            "sensor_id": "SENSOR3",
+            "batch_id": "BATCH1",
+            "reading_type": "pressure",
+            "value": 1008.3,
+            "has_excursion": false,
+            "reading_timestamp": "2024-12-18T06:30:00Z"
+        },
+        {
+            "reading_id": "READING115",
+            "sensor_id": "SENSOR3",
+            "batch_id": "BATCH1",
+            "reading_type": "pressure",
+            "value": 1008.7,
+            "has_excursion": false,
+            "reading_timestamp": "2024-12-18T07:00:00Z"
+        },
+        {
+            "reading_id": "READING116",
+            "sensor_id": "SENSOR3",
+            "batch_id": "BATCH1",
+            "reading_type": "pressure",
+            "value": 1010.42,
+            "has_excursion": false,
+            "reading_timestamp": "2024-12-18T07:30:00Z"
+        },
+        {
+            "reading_id": "READING117",
+            "sensor_id": "SENSOR3",
+            "batch_id": "BATCH1",
+            "reading_type": "pressure",
+            "value": 1008,
+            "has_excursion": false,
+            "reading_timestamp": "2024-12-18T08:00:00Z"
+        },
+        {
+            "reading_id": "READING118",
+            "sensor_id": "SENSOR3",
+            "batch_id": "BATCH1",
+            "reading_type": "pressure",
+            "value": 1006.92,
+            "has_excursion": false,
+            "reading_timestamp": "2024-12-18T08:30:00Z"
+        },
+        {
+            "reading_id": "READING119",
+            "sensor_id": "SENSOR3",
+            "batch_id": "BATCH1",
+            "reading_type": "pressure",
+            "value": 1005.93,
+            "has_excursion": false,
+            "reading_timestamp": "2024-12-18T09:00:00Z"
+        },
+        {
+            "reading_id": "READING120",
+            "sensor_id": "SENSOR3",
+            "batch_id": "BATCH1",
+            "reading_type": "pressure",
+            "value": 1008.23,
+            "has_excursion": false,
+            "reading_timestamp": "2024-12-18T09:30:00Z"
+        },
+        {
+            "reading_id": "READING121",
+            "sensor_id": "SENSOR3",
+            "batch_id": "BATCH1",
+            "reading_type": "pressure",
+            "value": 1004.3,
+            "has_excursion": false,
+            "reading_timestamp": "2024-12-18T10:00:00Z"
+        },
+        {
+            "reading_id": "READING122",
+            "sensor_id": "SENSOR3",
+            "batch_id": "BATCH1",
+            "reading_type": "pressure",
+            "value": 1005.82,
+            "has_excursion": false,
+            "reading_timestamp": "2024-12-18T10:30:00Z"
+        },
+        {
+            "reading_id": "READING123",
+            "sensor_id": "SENSOR3",
+            "batch_id": "BATCH1",
+            "reading_type": "pressure",
+            "value": 1002.25,
+            "has_excursion": false,
+            "reading_timestamp": "2024-12-18T11:00:00Z"
+        },
+        {
+            "reading_id": "READING124",
+            "sensor_id": "SENSOR3",
+            "batch_id": "BATCH1",
+            "reading_type": "pressure",
+            "value": 1002.63,
+            "has_excursion": false,
+            "reading_timestamp": "2024-12-18T11:30:00Z"
+        },
+        {
+            "reading_id": "READING125",
+            "sensor_id": "SENSOR3",
+            "batch_id": "BATCH1",
+            "reading_type": "pressure",
+            "value": 998.14,
+            "has_excursion": false,
+            "reading_timestamp": "2024-12-18T12:00:00Z"
+        },
+        {
+            "reading_id": "READING126",
+            "sensor_id": "SENSOR3",
+            "batch_id": "BATCH1",
+            "reading_type": "pressure",
+            "value": 998.28,
+            "has_excursion": false,
+            "reading_timestamp": "2024-12-18T12:30:00Z"
+        },
+        {
+            "reading_id": "READING127",
+            "sensor_id": "SENSOR3",
+            "batch_id": "BATCH1",
+            "reading_type": "pressure",
+            "value": 997.01,
+            "has_excursion": false,
+            "reading_timestamp": "2024-12-18T13:00:00Z"
+        },
+        {
+            "reading_id": "READING128",
+            "sensor_id": "SENSOR3",
+            "batch_id": "BATCH1",
+            "reading_type": "pressure",
+            "value": 999.25,
+            "has_excursion": false,
+            "reading_timestamp": "2024-12-18T13:30:00Z"
+        },
+        {
+            "reading_id": "READING129",
+            "sensor_id": "SENSOR3",
+            "batch_id": "BATCH1",
+            "reading_type": "pressure",
+            "value": 994.92,
+            "has_excursion": false,
+            "reading_timestamp": "2024-12-18T14:00:00Z"
+        },
+        {
+            "reading_id": "READING130",
+            "sensor_id": "SENSOR3",
+            "batch_id": "BATCH1",
+            "reading_type": "pressure",
+            "value": 995.32,
+            "has_excursion": false,
+            "reading_timestamp": "2024-12-18T14:30:00Z"
+        },
+        {
+            "reading_id": "READING131",
+            "sensor_id": "SENSOR3",
+            "batch_id": "BATCH1",
+            "reading_type": "pressure",
+            "value": 992.99,
+            "has_excursion": false,
+            "reading_timestamp": "2024-12-18T15:00:00Z"
+        },
+        {
+            "reading_id": "READING132",
+            "sensor_id": "SENSOR3",
+            "batch_id": "BATCH1",
+            "reading_type": "pressure",
+            "value": 994.09,
+            "has_excursion": false,
+            "reading_timestamp": "2024-12-18T15:30:00Z"
+        },
+        {
+            "reading_id": "READING133",
+            "sensor_id": "SENSOR3",
+            "batch_id": "BATCH1",
+            "reading_type": "pressure",
+            "value": 992.54,
+            "has_excursion": false,
+            "reading_timestamp": "2024-12-18T16:00:00Z"
+        },
+        {
+            "reading_id": "READING134",
+            "sensor_id": "SENSOR3",
+            "batch_id": "BATCH1",
+            "reading_type": "pressure",
+            "value": 1040,
+            "has_excursion": true,
+            "reading_timestamp": "2024-12-18T16:30:00Z"
+        },
+        {
+            "reading_id": "READING135",
+            "sensor_id": "SENSOR3",
+            "batch_id": "BATCH1",
+            "reading_type": "pressure",
+            "value": 990.08,
+            "has_excursion": false,
+            "reading_timestamp": "2024-12-18T17:00:00Z"
+        },
+        {
+            "reading_id": "READING136",
+            "sensor_id": "SENSOR3",
+            "batch_id": "BATCH1",
+            "reading_type": "pressure",
+            "value": 989.78,
+            "has_excursion": false,
+            "reading_timestamp": "2024-12-18T17:30:00Z"
+        },
+        {
+            "reading_id": "READING137",
+            "sensor_id": "SENSOR3",
+            "batch_id": "BATCH1",
+            "reading_type": "pressure",
+            "value": 988.98,
+            "has_excursion": false,
+            "reading_timestamp": "2024-12-18T18:00:00Z"
+        },
+        {
+            "reading_id": "READING138",
+            "sensor_id": "SENSOR3",
+            "batch_id": "BATCH1",
+            "reading_type": "pressure",
+            "value": 989.4,
+            "has_excursion": false,
+            "reading_timestamp": "2024-12-18T18:30:00Z"
+        },
+        {
+            "reading_id": "READING139",
+            "sensor_id": "SENSOR3",
+            "batch_id": "BATCH1",
+            "reading_type": "pressure",
+            "value": 991.32,
+            "has_excursion": false,
+            "reading_timestamp": "2024-12-18T19:00:00Z"
+        },
+        {
+            "reading_id": "READING140",
+            "sensor_id": "SENSOR3",
+            "batch_id": "BATCH1",
+            "reading_type": "pressure",
+            "value": 990.06,
+            "has_excursion": false,
+            "reading_timestamp": "2024-12-18T19:30:00Z"
+        },
+        {
+            "reading_id": "READING141",
+            "sensor_id": "SENSOR3",
+            "batch_id": "BATCH1",
+            "reading_type": "pressure",
+            "value": 989.42,
+            "has_excursion": false,
+            "reading_timestamp": "2024-12-18T20:00:00Z"
+        },
+        {
+            "reading_id": "READING142",
+            "sensor_id": "SENSOR3",
+            "batch_id": "BATCH1",
+            "reading_type": "pressure",
+            "value": 990.8,
+            "has_excursion": false,
+            "reading_timestamp": "2024-12-18T20:30:00Z"
+        },
+        {
+            "reading_id": "READING143",
+            "sensor_id": "SENSOR3",
+            "batch_id": "BATCH1",
+            "reading_type": "pressure",
+            "value": 990.99,
+            "has_excursion": false,
+            "reading_timestamp": "2024-12-18T21:00:00Z"
+        },
+        {
+            "reading_id": "READING144",
+            "sensor_id": "SENSOR3",
+            "batch_id": "BATCH1",
+            "reading_type": "pressure",
+            "value": 993.89,
+            "has_excursion": false,
+            "reading_timestamp": "2024-12-18T21:30:00Z"
+        },
+        {
+            "reading_id": "READING145",
+            "sensor_id": "SENSOR3",
+            "batch_id": "BATCH1",
+            "reading_type": "pressure",
+            "value": 994.36,
+            "has_excursion": false,
+            "reading_timestamp": "2024-12-18T22:00:00Z"
+        },
+        {
+            "reading_id": "READING146",
+            "sensor_id": "SENSOR3",
+            "batch_id": "BATCH1",
+            "reading_type": "pressure",
+            "value": 993.48,
+            "has_excursion": false,
+            "reading_timestamp": "2024-12-18T22:30:00Z"
+        },
+        {
+            "reading_id": "READING147",
+            "sensor_id": "SENSOR3",
+            "batch_id": "BATCH1",
+            "reading_type": "pressure",
+            "value": 997.71,
+            "has_excursion": false,
+            "reading_timestamp": "2024-12-18T23:00:00Z"
+        },
+        {
+            "reading_id": "READING148",
+            "sensor_id": "SENSOR3",
+            "batch_id": "BATCH1",
+            "reading_type": "pressure",
+            "value": 996.17,
+            "has_excursion": false,
+            "reading_timestamp": "2024-12-18T23:30:00Z"
+        },
+        {
+            "reading_id": "READING149",
+            "sensor_id": "SENSOR3",
+            "batch_id": "BATCH1",
+            "reading_type": "pressure",
+            "value": 999.36,
+            "has_excursion": false,
+            "reading_timestamp": "2024-12-19T00:00:00Z"
+        },
+        {
+            "reading_id": "READING150",
+            "sensor_id": "SENSOR3",
+            "batch_id": "BATCH1",
+            "reading_type": "pressure",
+            "value": 1000.14,
+            "has_excursion": false,
+            "reading_timestamp": "2024-12-19T00:30:00Z"
+        }
+    ]
+}

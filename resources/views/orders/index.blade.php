@@ -30,29 +30,29 @@
             <tbody class="divide-y divide-gray-200">
                 @foreach($orders as $order)
                 <tr>
-                    <td class="px-6 py-4">{{ $order->id }}</td>
-                    <td class="px-6 py-4">{{ $order->product->name }}</td>
-                    <td class="px-6 py-4">{{ $order->sender->name }}</td>
-                    <td class="px-6 py-4">{{ $order->receiver->name }}</td>
-                    <td class="px-6 py-4">{{ $order->quantity }}</td>
+                    <td class="px-6 py-4">{{ $order['id'] }}</td>
+                    <td class="px-6 py-4">{{ $order['productId'] }}</td>
+                    <td class="px-6 py-4">{{ $order['senderId'] }}</td>
+                    <td class="px-6 py-4">{{ $order['receiverId'] }}</td>
+                    <td class="px-6 py-4">{{ $order['quantity'] }}</td>
                     <td class="px-6 py-4">
                         <span class="px-2 py-1 text-sm rounded-full 
-                            {{ $order->status === 'pending' ? 'bg-yellow-100 text-yellow-800' : '' }}
-                            {{ $order->status === 'processing' ? 'bg-blue-100 text-blue-800' : '' }}
-                            {{ $order->status === 'completed' ? 'bg-green-100 text-green-800' : '' }}
-                            {{ $order->status === 'cancelled' ? 'bg-red-100 text-red-800' : '' }}">
-                            {{ ucfirst($order->status) }}
+                            {{ $order['status'] === 'pending' ? 'bg-yellow-100 text-yellow-800' : '' }}
+                            {{ $order['status'] === 'processing' ? 'bg-blue-100 text-blue-800' : '' }}
+                            {{ $order['status'] === 'completed' ? 'bg-green-100 text-green-800' : '' }}
+                            {{ $order['status'] === 'cancelled' ? 'bg-red-100 text-red-800' : '' }}">
+                            {{ ucfirst($order['status']) }}
                         </span>
                     </td>
                     <td class="px-6 py-4">
-                        @if($order->status === 'BATCHED')
-                            <a href="{{ route('batches.create', $order->id) }}" class="bg-green-500 text-white px-4 py-2 rounded">
+                        @if($order['status'] === 'BATCHED')
+                            <a href="{{ route('batches.create', $order['id']) }}" class="bg-green-500 text-white px-4 py-2 rounded">
                                 Create Batch
                             </a>
                         @endif
-                        <a href="{{ route('orders.show', $order->id) }}" class="text-blue-600 hover:text-blue-900 mr-3">View</a>
-                        <a href="{{ route('orders.edit', $order->id) }}" class="text-green-600 hover:text-green-900 mr-3">Edit</a>
-                        <form action="{{ route('orders.destroy', $order->id) }}" method="POST" class="inline">
+                        <a href="{{ route('orders.show', $order['id']) }}" class="text-blue-600 hover:text-blue-900 mr-3">View</a>
+                        <a href="{{ route('orders.edit', $order['id']) }}" class="text-green-600 hover:text-green-900 mr-3">Edit</a>
+                        <form action="{{ route('orders.destroy', $order['id']) }}" method="POST" class="inline">
                             @csrf
                             @method('DELETE')
                             <button type="submit" class="text-red-600 hover:text-red-900" onclick="return confirm('Are you sure?')">Delete</button>

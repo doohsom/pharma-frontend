@@ -40,27 +40,22 @@ class UserController extends Controller
             $validated = $request->validate([
                 'name' => 'required|string|max:255',
                 'email' => 'required|email|max:255|unique:users',
-                'password' => 'required|min:8|confirmed',
-                'phoneNumber' => 'required|string|max:20',
+                'password' => 'required|min:8',
+                'phone_number' => 'required|string|max:20',
                 'role' => 'required|string|in:regulator,manufacturer,logistics,vendor',
                 'address' => 'required|string',
                 'status' => 'required|string|in:active,inactive,pending',
             ]);
 
-            // Handle compliance document if present
-            if ($request->hasFile('complianceDocument')) {
-                $path = $request->file('complianceDocument')->store('complianceDocuments', 'public');
-                $validated['compliance_document'] = $path;
-            }
 
             $validated['created_by'] = auth()->id() ?? 'ADMIN_001';
             
             $user = $this->userService->createUser($validated);
 
-            if (!$user->api_synced) {
+            if (!$user) {
                 return redirect()->route('users.index')
                     ->with('warning', 'User created in database but blockchain sync failed. Will retry sync later.')
-                    ->with('error_details', $user->api_sync_error);
+                    ->with('error_details', $user);
             }
 
             return redirect()->route('users.index')

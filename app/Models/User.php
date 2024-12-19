@@ -18,7 +18,6 @@ class User extends Authenticatable
         'phone_number',
         'role',
         'address',
-        'compliance_document',
         'status',
         'created_by',
         'api_synced',
@@ -40,7 +39,6 @@ class User extends Authenticatable
             'phoneNumber' => $this->phone_number,
             'role' => $this->role,
             'address' => $this->address,
-            'complianceDocument' => $this->compliance_document,
             'createdBy' => $this->created_by,
             'status' => $this->status
         ];

@@ -20,7 +20,6 @@ return new class extends Migration
             $table->string('phone_number');
             $table->string('role');
             $table->text('address');
-            $table->string('compliance_document')->nullable();
             $table->string('status')->default('pending');
             $table->string('created_by');
             $table->rememberToken();

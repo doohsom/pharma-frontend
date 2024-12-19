@@ -104,6 +104,7 @@ class ComposerStaticInit4d79da677e93b7f536a6f6c78001e6e4
             'Psr\\Clock\\' => 10,
             'PhpParser\\' => 10,
             'PhpOption\\' => 10,
+            'PhpMqtt\\Client\\' => 15,
         ),
         'N' => 
         array (
@@ -111,6 +112,7 @@ class ComposerStaticInit4d79da677e93b7f536a6f6c78001e6e4
         ),
         'M' => 
         array (
+            'MyCLabs\\Enum\\' => 13,
             'Monolog\\' => 8,
             'Mockery\\' => 8,
         ),
@@ -362,9 +364,17 @@ class ComposerStaticInit4d79da677e93b7f536a6f6c78001e6e4
         array (
             0 => __DIR__ . '/..' . '/phpoption/phpoption/src/PhpOption',
         ),
+        'PhpMqtt\\Client\\' => 
+        array (
+            0 => __DIR__ . '/..' . '/php-mqtt/client/src',
+        ),
         'NunoMaduro\\Collision\\' => 
         array (
             0 => __DIR__ . '/..' . '/nunomaduro/collision/src',
+        ),
+        'MyCLabs\\Enum\\' => 
+        array (
+            0 => __DIR__ . '/..' . '/myclabs/php-enum/src',
         ),
         'Monolog\\' => 
         array (
@@ -514,9 +524,23 @@ class ComposerStaticInit4d79da677e93b7f536a6f6c78001e6e4
     );
 
     public static $classMap = array (
+        'App\\Http\\Controllers\\BatchController' => __DIR__ . '/../..' . '/app/Http/Controllers/BatchController.php',
         'App\\Http\\Controllers\\Controller' => __DIR__ . '/../..' . '/app/Http/Controllers/Controller.php',
+        'App\\Http\\Controllers\\DashbaordController' => __DIR__ . '/../..' . '/app/Http/Controllers/DashbaordController.php',
+        'App\\Http\\Controllers\\DashboardController' => __DIR__ . '/../..' . '/app/Http/Controllers/DashboardController.php',
+        'App\\Http\\Controllers\\OrderController' => __DIR__ . '/../..' . '/app/Http/Controllers/OrderController.php',
+        'App\\Http\\Controllers\\ProductController' => __DIR__ . '/../..' . '/app/Http/Controllers/ProductController.php',
+        'App\\Http\\Controllers\\UserController' => __DIR__ . '/../..' . '/app/Http/Controllers/UserController.php',
+        'App\\Http\\Middleware\\RedirectUsers' => __DIR__ . '/../..' . '/app/Http/Middleware/RedirectUsers.php',
         'App\\Models\\User' => __DIR__ . '/../..' . '/app/Models/User.php',
         'App\\Providers\\AppServiceProvider' => __DIR__ . '/../..' . '/app/Providers/AppServiceProvider.php',
+        'App\\Services\\BatchApiService' => __DIR__ . '/../..' . '/app/Services/BatchApiService.php',
+        'App\\Services\\ColdChainService' => __DIR__ . '/../..' . '/app/Services/ColdChainService.php',
+        'App\\Services\\OrderApiService' => __DIR__ . '/../..' . '/app/Services/OrderApiService.php',
+        'App\\Services\\ProductApiService' => __DIR__ . '/../..' . '/app/Services/ProductApiService.php',
+        'App\\Services\\UserApiService' => __DIR__ . '/../..' . '/app/Services/UserApiService.php',
+        'App\\Services\\UserApiServiceJson' => __DIR__ . '/../..' . '/app/Services/UserApiServiceJson.php',
+        'App\\Services\\UserService' => __DIR__ . '/../..' . '/app/Services/UserService.php',
         'Attribute' => __DIR__ . '/..' . '/symfony/polyfill-php80/Resources/stubs/Attribute.php',
         'Brick\\Math\\BigDecimal' => __DIR__ . '/..' . '/brick/math/src/BigDecimal.php',
         'Brick\\Math\\BigInteger' => __DIR__ . '/..' . '/brick/math/src/BigInteger.php',
@@ -636,6 +660,7 @@ class ComposerStaticInit4d79da677e93b7f536a6f6c78001e6e4
         'Cron\\MonthField' => __DIR__ . '/..' . '/dragonmantank/cron-expression/src/Cron/MonthField.php',
         'Database\\Factories\\UserFactory' => __DIR__ . '/../..' . '/database/factories/UserFactory.php',
         'Database\\Seeders\\DatabaseSeeder' => __DIR__ . '/../..' . '/database/seeders/DatabaseSeeder.php',
+        'Database\\Seeders\\UserSeeder' => __DIR__ . '/../..' . '/database/seeders/UserSeeder.php',
         'DateError' => __DIR__ . '/..' . '/symfony/polyfill-php83/Resources/stubs/DateError.php',
         'DateException' => __DIR__ . '/..' . '/symfony/polyfill-php83/Resources/stubs/DateException.php',
         'DateInvalidOperationException' => __DIR__ . '/..' . '/symfony/polyfill-php83/Resources/stubs/DateInvalidOperationException.php',
@@ -3542,6 +3567,8 @@ class ComposerStaticInit4d79da677e93b7f536a6f6c78001e6e4
         'Monolog\\SignalHandler' => __DIR__ . '/..' . '/monolog/monolog/src/Monolog/SignalHandler.php',
         'Monolog\\Test\\TestCase' => __DIR__ . '/..' . '/monolog/monolog/src/Monolog/Test/TestCase.php',
         'Monolog\\Utils' => __DIR__ . '/..' . '/monolog/monolog/src/Monolog/Utils.php',
+        'MyCLabs\\Enum\\Enum' => __DIR__ . '/..' . '/myclabs/php-enum/src/Enum.php',
+        'MyCLabs\\Enum\\PHPUnit\\Comparator' => __DIR__ . '/..' . '/myclabs/php-enum/src/PHPUnit/Comparator.php',
         'Nette\\ArgumentOutOfRangeException' => __DIR__ . '/..' . '/nette/utils/src/exceptions.php',
         'Nette\\DeprecatedException' => __DIR__ . '/..' . '/nette/utils/src/exceptions.php',
         'Nette\\DirectoryNotFoundException' => __DIR__ . '/..' . '/nette/utils/src/exceptions.php',
@@ -4629,6 +4656,39 @@ class ComposerStaticInit4d79da677e93b7f536a6f6c78001e6e4
         'PharIo\\Version\\VersionConstraintParser' => __DIR__ . '/..' . '/phar-io/version/src/VersionConstraintParser.php',
         'PharIo\\Version\\VersionConstraintValue' => __DIR__ . '/..' . '/phar-io/version/src/VersionConstraintValue.php',
         'PharIo\\Version\\VersionNumber' => __DIR__ . '/..' . '/phar-io/version/src/VersionNumber.php',
+        'PhpMqtt\\Client\\Concerns\\GeneratesRandomClientIds' => __DIR__ . '/..' . '/php-mqtt/client/src/Concerns/GeneratesRandomClientIds.php',
+        'PhpMqtt\\Client\\Concerns\\OffersHooks' => __DIR__ . '/..' . '/php-mqtt/client/src/Concerns/OffersHooks.php',
+        'PhpMqtt\\Client\\Concerns\\TranscodesData' => __DIR__ . '/..' . '/php-mqtt/client/src/Concerns/TranscodesData.php',
+        'PhpMqtt\\Client\\Concerns\\ValidatesConfiguration' => __DIR__ . '/..' . '/php-mqtt/client/src/Concerns/ValidatesConfiguration.php',
+        'PhpMqtt\\Client\\Concerns\\WorksWithBuffers' => __DIR__ . '/..' . '/php-mqtt/client/src/Concerns/WorksWithBuffers.php',
+        'PhpMqtt\\Client\\ConnectionSettings' => __DIR__ . '/..' . '/php-mqtt/client/src/ConnectionSettings.php',
+        'PhpMqtt\\Client\\Contracts\\MessageProcessor' => __DIR__ . '/..' . '/php-mqtt/client/src/Contracts/MessageProcessor.php',
+        'PhpMqtt\\Client\\Contracts\\MqttClient' => __DIR__ . '/..' . '/php-mqtt/client/src/Contracts/MqttClient.php',
+        'PhpMqtt\\Client\\Contracts\\Repository' => __DIR__ . '/..' . '/php-mqtt/client/src/Contracts/Repository.php',
+        'PhpMqtt\\Client\\Exceptions\\ClientNotConnectedToBrokerException' => __DIR__ . '/..' . '/php-mqtt/client/src/Exceptions/ClientNotConnectedToBrokerException.php',
+        'PhpMqtt\\Client\\Exceptions\\ConfigurationInvalidException' => __DIR__ . '/..' . '/php-mqtt/client/src/Exceptions/ConfigurationInvalidException.php',
+        'PhpMqtt\\Client\\Exceptions\\ConnectingToBrokerFailedException' => __DIR__ . '/..' . '/php-mqtt/client/src/Exceptions/ConnectingToBrokerFailedException.php',
+        'PhpMqtt\\Client\\Exceptions\\DataTransferException' => __DIR__ . '/..' . '/php-mqtt/client/src/Exceptions/DataTransferException.php',
+        'PhpMqtt\\Client\\Exceptions\\InvalidMessageException' => __DIR__ . '/..' . '/php-mqtt/client/src/Exceptions/InvalidMessageException.php',
+        'PhpMqtt\\Client\\Exceptions\\MqttClientException' => __DIR__ . '/..' . '/php-mqtt/client/src/Exceptions/MqttClientException.php',
+        'PhpMqtt\\Client\\Exceptions\\PendingMessageAlreadyExistsException' => __DIR__ . '/..' . '/php-mqtt/client/src/Exceptions/PendingMessageAlreadyExistsException.php',
+        'PhpMqtt\\Client\\Exceptions\\PendingMessageNotFoundException' => __DIR__ . '/..' . '/php-mqtt/client/src/Exceptions/PendingMessageNotFoundException.php',
+        'PhpMqtt\\Client\\Exceptions\\ProtocolNotSupportedException' => __DIR__ . '/..' . '/php-mqtt/client/src/Exceptions/ProtocolNotSupportedException.php',
+        'PhpMqtt\\Client\\Exceptions\\ProtocolViolationException' => __DIR__ . '/..' . '/php-mqtt/client/src/Exceptions/ProtocolViolationException.php',
+        'PhpMqtt\\Client\\Exceptions\\RepositoryException' => __DIR__ . '/..' . '/php-mqtt/client/src/Exceptions/RepositoryException.php',
+        'PhpMqtt\\Client\\Logger' => __DIR__ . '/..' . '/php-mqtt/client/src/Logger.php',
+        'PhpMqtt\\Client\\Message' => __DIR__ . '/..' . '/php-mqtt/client/src/Message.php',
+        'PhpMqtt\\Client\\MessageProcessors\\BaseMessageProcessor' => __DIR__ . '/..' . '/php-mqtt/client/src/MessageProcessors/BaseMessageProcessor.php',
+        'PhpMqtt\\Client\\MessageProcessors\\Mqtt311MessageProcessor' => __DIR__ . '/..' . '/php-mqtt/client/src/MessageProcessors/Mqtt311MessageProcessor.php',
+        'PhpMqtt\\Client\\MessageProcessors\\Mqtt31MessageProcessor' => __DIR__ . '/..' . '/php-mqtt/client/src/MessageProcessors/Mqtt31MessageProcessor.php',
+        'PhpMqtt\\Client\\MessageType' => __DIR__ . '/..' . '/php-mqtt/client/src/MessageType.php',
+        'PhpMqtt\\Client\\MqttClient' => __DIR__ . '/..' . '/php-mqtt/client/src/MqttClient.php',
+        'PhpMqtt\\Client\\PendingMessage' => __DIR__ . '/..' . '/php-mqtt/client/src/PendingMessage.php',
+        'PhpMqtt\\Client\\PublishedMessage' => __DIR__ . '/..' . '/php-mqtt/client/src/PublishedMessage.php',
+        'PhpMqtt\\Client\\Repositories\\MemoryRepository' => __DIR__ . '/..' . '/php-mqtt/client/src/Repositories/MemoryRepository.php',
+        'PhpMqtt\\Client\\SubscribeRequest' => __DIR__ . '/..' . '/php-mqtt/client/src/SubscribeRequest.php',
+        'PhpMqtt\\Client\\Subscription' => __DIR__ . '/..' . '/php-mqtt/client/src/Subscription.php',
+        'PhpMqtt\\Client\\UnsubscribeRequest' => __DIR__ . '/..' . '/php-mqtt/client/src/UnsubscribeRequest.php',
         'PhpOption\\LazyOption' => __DIR__ . '/..' . '/phpoption/phpoption/src/PhpOption/LazyOption.php',
         'PhpOption\\None' => __DIR__ . '/..' . '/phpoption/phpoption/src/PhpOption/None.php',
         'PhpOption\\Option' => __DIR__ . '/..' . '/phpoption/phpoption/src/PhpOption/Option.php',
@@ -5471,7 +5531,7 @@ class ComposerStaticInit4d79da677e93b7f536a6f6c78001e6e4
         'SebastianBergmann\\Type\\UnknownType' => __DIR__ . '/..' . '/sebastian/type/src/type/UnknownType.php',
         'SebastianBergmann\\Type\\VoidType' => __DIR__ . '/..' . '/sebastian/type/src/type/VoidType.php',
         'SebastianBergmann\\Version' => __DIR__ . '/..' . '/sebastian/version/src/Version.php',
-        'Stringable' => __DIR__ . '/..' . '/symfony/polyfill-php80/Resources/stubs/Stringable.php',
+        'Stringable' => __DIR__ . '/..' . '/myclabs/php-enum/stubs/Stringable.php',
         'Symfony\\Component\\Clock\\Clock' => __DIR__ . '/..' . '/symfony/clock/Clock.php',
         'Symfony\\Component\\Clock\\ClockAwareTrait' => __DIR__ . '/..' . '/symfony/clock/ClockAwareTrait.php',
         'Symfony\\Component\\Clock\\ClockInterface' => __DIR__ . '/..' . '/symfony/clock/ClockInterface.php',

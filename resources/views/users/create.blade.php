@@ -21,7 +21,10 @@
                 <label for="name" class="block text-sm font-medium text-gray-700">Name</label>
                 <input type="text" name="name" id="name" class="mt-1 block w-full rounded-md border-gray-300 shadow-sm" required>
             </div>
-
+            <div>
+                <label for="email" class="block text-sm font-medium text-gray-700">Password</label>
+                <input type="password" name="password" id="password" class="mt-1 block w-full rounded-md border-gray-300 shadow-sm" required>
+            </div>
             <div>
                 <label for="email" class="block text-sm font-medium text-gray-700">Email</label>
                 <input type="email" name="email" id="email" class="mt-1 block w-full rounded-md border-gray-300 shadow-sm" required>
@@ -29,7 +32,7 @@
 
             <div>
                 <label for="phoneNumber" class="block text-sm font-medium text-gray-700">Phone Number</label>
-                <input type="tel" name="phoneNumber" id="phoneNumber" class="mt-1 block w-full rounded-md border-gray-300 shadow-sm" required>
+                <input type="tel" name="phone_number" id="phone_number" class="mt-1 block w-full rounded-md border-gray-300 shadow-sm" required>
             </div>
 
             <div>
@@ -45,11 +48,6 @@
             <div>
                 <label for="address" class="block text-sm font-medium text-gray-700">Address</label>
                 <textarea name="address" id="address" rows="3" class="mt-1 block w-full rounded-md border-gray-300 shadow-sm"></textarea>
-            </div>
-
-            <div>
-                <label for="complianceDocument" class="block text-sm font-medium text-gray-700">Compliance Document</label>
-                <input type="file" name="complianceDocument" id="complianceDocument" class="mt-1 block w-full">
             </div>
 
             <div>

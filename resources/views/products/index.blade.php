@@ -19,7 +19,7 @@
             <thead class="bg-gray-50">
                 <tr>
                     <th class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase">Name</th>
-                    <th class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase">Type</th>
+                    <th class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase">Description</th>
                     <th class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase">Price</th>
                     <th class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase">Status</th>
                     <th class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase">Actions</th>
@@ -28,22 +28,28 @@
             <tbody class="divide-y divide-gray-200">
                 @foreach($products as $product)
                 <tr>
-                    <td class="px-6 py-4">{{ $product->name }}</td>
-                    <td class="px-6 py-4">{{ $product->type }}</td>
-                    <td class="px-6 py-4">${{ number_format($product->price, 2) }}</td>
+                    <td class="px-6 py-4">{{ $product['name'] }}</td>
+                    <td class="px-6 py-4">{{ $product['description'] }}</td>
+                    <td class="px-6 py-4">${{ number_format($product['price'], 2) }}</td>
                     <td class="px-6 py-4">
-                        <span class="px-2 py-1 text-sm rounded-full {{ $product->status === 'active' ? 'bg-green-100 text-green-800' : 'bg-red-100 text-red-800' }}">
-                            {{ $product->status }}
+                        <span class="px-2 py-1 text-sm rounded-full {{ $product['status'] === 'active' ? 'bg-green-100 text-green-800' : 'bg-red-100 text-red-800' }}">
+                            {{ $product['status'] }}
                         </span>
                     </td>
                     <td class="px-6 py-4">
-                        <a href="{{ route('products.show', $product->id) }}" class="text-blue-600 hover:text-blue-900 mr-3">View</a>
-                        <a href="{{ route('products.edit', $product->id) }}" class="text-green-600 hover:text-green-900 mr-3">Edit</a>
-                        <form action="{{ route('products.destroy', $product->id) }}" method="POST" class="inline">
+                        <button onclick="openDetailsModal('{{ $product['id'] }}')" 
+                            class="text-blue-600 hover:text-blue-800 focus:outline-none">
+                            View Details
+                        </button>
+                        <button onclick="openStatusModal('{{ $product['id'] }}')" 
+                            class="text-blue-600 hover:text-blue-800 focus:outline-none">
+                            Update Status
+                        </button>
+                        <form action="{{ route('products.destroy', $product['id']) }}" method="POST" class="inline">
                             @csrf
                             @method('DELETE')
                             <button type="submit" class="text-red-600 hover:text-red-900" onclick="return confirm('Are you sure?')">Delete</button>
-                        </form>
+                        </form> 
                     </td>
                 </tr>
                 @endforeach
@@ -51,4 +57,6 @@
         </table>
     </div>
 </div>
+@include('products.partials.status-modal')
+@include('products.partials.details-modal')
 @endsection

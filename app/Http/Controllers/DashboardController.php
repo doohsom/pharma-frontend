@@ -2,121 +2,106 @@
 
 namespace App\Http\Controllers;
 
-use Carbon\Carbon;
 use Illuminate\Http\Request;
-use Illuminate\Support\Facades\Log;
+use Carbon\Carbon;
 use Illuminate\Support\Facades\Http;
+use Illuminate\Support\Facades\Cache;
 
 class DashboardController extends Controller
 {
-    private $mockDataPath;
+    private $readings = [];
+    private $apiBaseUrl = 'http://localhost:8080/api';
+    private $cacheTimeout = 30;
 
     public function __construct()
     {
-        $this->mockDataPath = storage_path('app/mock/sensor_readings.json');
+        $this->readings = Cache::remember('sensor_readings', $this->cacheTimeout, function () {
+            try {
+                $response = Http::get("{$this->apiBaseUrl}/readings");
+                if ($response->successful()) {
+                    return $response->json()['readings'] ?? [];
+                }
+                return [];
+            } catch (\Exception $e) {
+                \Log::error("Error fetching sensor readings: " . $e->getMessage());
+                return [];
+            }
+        });
     }
 
     public function show()
     {
-        try {
-            // Fetch and parse sensor readings
-            $rawData = json_decode(file_get_contents($this->mockDataPath));
-            $sensorData = collect($rawData)
-                ->where('batchId', 'BATCH_001')
-                ->map(function($reading) {
-                    return (object) [
-                        'timestamp' => Carbon::parse($reading->timestamp)->format('c'),
-                        'readingType' => $reading->readingType,
-                        'value' => (float) $reading->value,
-                        'location' => $reading->location,
-                        'hasExcursion' => (bool) $reading->hasExcursion,
-                        'batchId' => $reading->batchId
+        // Group all readings by batch first
+        $batches = collect($this->readings)->groupBy('batch_id');
+        
+        // Get latest batch readings
+        $latestBatch = $batches
+            ->sortByDesc(function ($batch) {
+                return $batch->first()['reading_timestamp'];
+            })
+            ->first() ?? collect([]);
+
+        // Get latest readings by type from the latest batch
+        $latestReadings = $latestBatch
+            ->groupBy('reading_type')
+            ->map(function ($readings) {
+                return $readings->first();
+            });
+
+        // Get excursions grouped by batch
+        $excursions = $batches->map(function ($batchReadings) {
+            return [
+                'batch_id' => $batchReadings->first()['batch_id'],
+                'timestamp' => $batchReadings->first()['reading_timestamp'],
+                'readings' => $batchReadings->where('has_excursion', true)->values()
+            ];
+        })->filter(function ($batch) {
+            return $batch['readings']->isNotEmpty();
+        })->values();
+
+        // Prepare batch summary data
+        $batchSummary = $batches->map(function ($batchReadings) {
+            $timestamp = $batchReadings->first()['reading_timestamp'];
+            return [
+                'batch_id' => $batchReadings->first()['batch_id'],
+                'timestamp' => Carbon::parse($timestamp)->format('Y-m-d H:i:s'),
+                'total_readings' => $batchReadings->count(),
+                'excursions' => $batchReadings->where('has_excursion', true)->count(),
+                'readings_by_type' => $batchReadings->groupBy('reading_type')->map(function ($typeReadings) {
+                    return [
+                        'avg_value' => $typeReadings->avg('value'),
+                        'excursions' => $typeReadings->where('has_excursion', true)->count()
                     ];
-                });
+                })
+            ];
+        });
 
-            // Calculate statistics
-            $avgTemp = $sensorData
-                ->where('readingType', 'temperature')
-                ->avg('value') ?? 0;
+        // Prepare time series data for charts
+        $chartData = collect(['temperature', 'humidity', 'pressure'])->mapWithKeys(function ($type) use ($batches) {
+            return [$type => $batches->map(function ($batchReadings) use ($type) {
+                $typeReadings = $batchReadings->where('reading_type', $type);
+                return [
+                    'timestamp' => Carbon::parse($batchReadings->first()['reading_timestamp'])->format('Y-m-d H:i:s'),
+                    'avg_value' => $typeReadings->avg('value'),
+                    'min_value' => $typeReadings->min('value'),
+                    'max_value' => $typeReadings->max('value'),
+                    'batch_id' => $batchReadings->first()['batch_id']
+                ];
+            })->sortBy('timestamp')->values()];
+        });
 
-            $avgHumidity = $sensorData
-                ->where('readingType', 'humidity')
-                ->avg('value') ?? 0;
-
-            $avgPressure = $sensorData
-                ->where('readingType', 'pressure')
-                ->avg('value') ?? 0;
-
-            $excursionCount = $sensorData
-                ->where('hasExcursion', true)
-                ->count();
-
-            $uniqueLocations = $sensorData
-                ->pluck('location')
-                ->unique()
-                ->count();
-
-            $lastReading = $sensorData->last();
-
-            // Debug data
-            Log::info('Sensor Data:', ['data' => $sensorData->toArray()]);
-
-            return view('dashboard', compact(
-                'sensorData',
-                'excursionCount',
-                'uniqueLocations',
-                'lastReading',
-                'avgTemp',
-                'avgHumidity',
-                'avgPressure'
-            ));
-        } catch (\Exception $e) {
-            \Log::error('Dashboard Error: ' . $e->getMessage());
-            return view('dashboard')->withErrors(['error' => 'Failed to fetch sensor data: ' . $e->getMessage()]);
-        }
+        return view('dashboard', [
+            'latestReadings' => $latestReadings,
+            'excursions' => $excursions,
+            'chartData' => $chartData,
+            'batchSummary' => $batchSummary,
+            'latestBatch' => $latestBatch->groupBy('reading_type')
+        ]);
     }
-    
-    public function oldShow()
+
+    public function refreshData()
     {
-        try {
-            // Fetch sensor readings from API
-            //$response = Http::get('api/sensor-readings/batch/BATCH001');
-            $sensorData = json_decode(file_get_contents($this->mockDataPath));
-            $sensorData = collect($sensorData)->where('batchId', 'BATCH_001');
-            //$sensorData = $response->json();
-
-            // Calculate statistics
-            $uniqueLocations = collect($sensorData)->pluck('location')->unique()->count();
-            $lastReading = collect($sensorData)->last();
-
-            // Calculate averages
-            $avgTemp = collect($sensorData)
-                ->where('readingType', 'temperature')
-                ->avg('value');
-
-            $avgHumidity = collect($sensorData)
-                ->where('readingType', 'humidity')
-                ->avg('value');
-
-            $avgPressure = collect($sensorData)
-                ->where('readingType', 'pressure')
-                ->avg('value');
-                
-            $excursionCount = collect($sensorData)
-                ->where('hasExcursion', true)
-                ->count();
-
-            return view('dashboard', compact(
-                'sensorData',
-                'excursionCount',
-                'uniqueLocations',
-                'lastReading',
-                'avgTemp',
-                'avgHumidity',
-                'avgPressure'
-            ));
-        } catch (\Exception $e) {
-            return view('dashboard')->withErrors(['error' => 'Failed to fetch sensor data']);
-        }
+        Cache::forget('sensor_readings');
+        return redirect()->route('dashboard')->with('message', 'Data refreshed successfully');
     }
 }

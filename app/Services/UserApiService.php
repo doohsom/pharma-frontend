@@ -11,7 +11,7 @@ class UserApiService
 
     public function __construct()
     {
-        $this->baseUrl = 'http://localhost:5050';
+        $this->baseUrl = 'http://localhost:5050/api';
     }
 
     public function getAllUsers()

@@ -15,8 +15,7 @@ class UserService
 
     public function __construct()
     {
-        $use =  true;
-        $this->userApiService = $use ? new UserApiServiceJson() : new UserApiService();
+        $this->userApiService = new UserApiService();
     }
 
     public function createUser(array $data)
@@ -34,17 +33,13 @@ class UserService
                 $blockchainData = $user->toBlockchainFormat();
                 $blockchainResponse = $this->userApiService->createUser($blockchainData);
                 
-                // Update sync status
-                $user->api_synced = true;
-                $user->api_sync_error = null;
                 $user->save();
 
                 DB::commit();
                 return $user;
             } catch (Exception $e) {
                 // Log blockchain sync error but don't fail the transaction
-                $user->api_synced = false;
-                $user->api_sync_error = $e->getMessage();
+                
                 $user->save();
 
                 Log::error('Blockchain sync failed for user: ' . $user->id, [

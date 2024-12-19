@@ -50,14 +50,6 @@
             </div>
 
             <div>
-                <label for="complianceDocument" class="block text-sm font-medium text-gray-700">Compliance Document</label>
-                @if($user['complianceDocument'])
-                    <p class="text-sm text-gray-500 mb-2">Current document: {{ basename($user['complianceDocument']) }}</p>
-                @endif
-                <input type="file" name="complianceDocument" id="complianceDocument" class="mt-1 block w-full">
-            </div>
-
-            <div>
                 <label for="status" class="block text-sm font-medium text-gray-700">Status</label>
                 <select name="status" id="status" class="mt-1 block w-full rounded-md border-gray-300 shadow-sm">
                     <option value="active" {{ $user['status'] === 'active' ? 'selected' : '' }}>Active</option>
