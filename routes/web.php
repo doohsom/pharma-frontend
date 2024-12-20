@@ -3,13 +3,19 @@
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\UserController;
 use App\Http\Controllers\BatchController;
-use App\Http\Controllers\DashboardController;
 use App\Http\Controllers\OrderController;
 use App\Http\Controllers\ProductController;
+use App\Http\Controllers\AuthController;
+use App\Http\Controllers\DashboardController;
+
+    Route::get('/login', [AuthController::class, 'index'])->name('login');
+    Route::post('/login', [AuthController::class, 'login'])->name('post.login');
 
 
-    Route::get('/', [DashboardController::class, 'show'])->name('dashboard');
-    Route::get('/dashboard', [DashboardController::class, 'show'])->name('dashboard');
+Route::middleware(['auth'])->group(function () {
+  
+    Route::get('/', [DashboardController::class, 'index'])->name('dashboard');
+    Route::get('/dashboard', [DashboardController::class, 'show'])->name('s.dashboard');
 
     Route::resource('users', UserController::class);
     Route::resource('products', ProductController::class);
@@ -26,4 +32,7 @@ use App\Http\Controllers\ProductController;
     Route::get('/batches/{batchId}/refresh', [BatchController::class, 'refreshBatch'])->name('batches.refresh.batch');
     Route::get('/batches/{batchId}/sensors/{sensorId}', [BatchController::class, 'sensorReadings'])->name('batches.sensor.readings');
 
-//});
+    Route::post('/logout', [AuthController::class, 'logout'])->name('logout');
+
+
+});

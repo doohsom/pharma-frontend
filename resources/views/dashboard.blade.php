@@ -1,300 +1,178 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Cold Chain Monitoring Dashboard</title>
-    <script src="https://cdn.tailwindcss.com"></script>
-    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
-    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
-    <script src="https://cdn.jsdelivr.net/npm/moment"></script>
-    <script src="https://cdn.jsdelivr.net/npm/chartjs-adapter-moment"></script>
-</head>
-<body class="bg-gray-100">
-    <div class="min-h-screen p-8">
-        <div class="max-w-7xl mx-auto">
-            <div class="flex justify-between items-center mb-8">
-                <h1 class="text-3xl font-bold">Cold Chain Monitoring Dashboard</h1>
-                <div class="flex items-center gap-4">
-                    <span class="text-sm text-gray-500">Last updated: {{ Carbon\Carbon::parse($latestReadings->first()['reading_timestamp'] ?? now())->diffForHumans() }}</span>
-                    <a href="{{ route('dashboard.refresh') }}" class="bg-blue-500 text-white px-4 py-2 rounded-lg hover:bg-blue-600">
-                        <i class="fas fa-sync-alt mr-2"></i> Refresh Data
-                    </a>
-                </div>
-            </div>
+<!-- resources/views/dashboard/index.blade.php -->
+@extends('layouts.app')
 
-            <!-- Latest Readings Cards -->
-            <div class="grid grid-cols-1 md:grid-cols-3 gap-6 mb-8">
-                @foreach(['temperature' => ['icon' => 'thermometer-half', 'color' => 'red', 'unit' => '°C'],
-                         'humidity' => ['icon' => 'tint', 'color' => 'blue', 'unit' => '%'],
-                         'pressure' => ['icon' => 'tachometer-alt', 'color' => 'green', 'unit' => 'hPa']] as $type => $config)
-                <div class="bg-white rounded-lg shadow p-6">
-                    <div class="flex items-center space-x-4">
-                        <i class="fas fa-{{ $config['icon'] }} text-3xl text-{{ $config['color'] }}-500"></i>
-                        <div>
-                            <p class="text-sm font-medium text-gray-500 capitalize">{{ $type }}</p>
-                            <h3 class="text-2xl font-bold">
-                                {{ $latestReadings[$type]['value'] ?? 'N/A' }}{{ $config['unit'] }}
-                            </h3>
-                            <p class="text-sm text-gray-500">
-                                Batch: {{ $latestReadings[$type]['batch_id'] ?? 'N/A' }}
-                            </p>
-                        </div>
-                    </div>
-                </div>
-                @endforeach
-            </div>
+@section('styles')
+<style>
+    .metric-card {
+        @apply rounded-lg shadow-lg p-12 transition-all duration-300 hover:shadow-xl text-white;
+    }
+    .metric-title {
+        @apply text-lg font-semibold mb-2;
+    }
+    .metric-value {
+        @apply text-3xl font-bold mt-2;
+    }
+    .metric-subvalue {
+        @apply text-sm mt-1 font-medium;
+    }
+    .alert-item {
+        @apply flex items-center p-4 rounded-lg mb-3 transition-all duration-300 hover:shadow-md;
+    }
+    .alert-icon {
+        @apply w-8 h-8 mr-4;
+    }
+    .chart-container {
+        @apply bg-white rounded-lg shadow-lg p-6 mt-8;
+    }
+</style>
+@endsection
 
-            <!-- Current Batch Summary -->
-            @if(isset($latestBatch))
-            <div class="bg-white rounded-lg shadow mb-8">
-                <div class="p-6">
-                    <h2 class="text-xl font-bold mb-4">Current Batch Details</h2>
-                    <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
-                        @foreach($latestBatch as $type => $readings)
-                        <div class="border rounded-lg p-4 {{ $readings->contains('has_excursion', true) ? 'border-red-200 bg-red-50' : 'border-green-200 bg-green-50' }}">
-                            <h3 class="text-lg font-semibold capitalize mb-2">{{ $type }}</h3>
-                            <div class="space-y-2">
-                                <p class="text-sm">Average: {{ $readings->avg('value') }}
-                                    @if($type === 'temperature')°C
-                                    @elseif($type === 'humidity')%
-                                    @else hPa
-                                    @endif
-                                </p>
-                                <p class="text-sm">Min: {{ $readings->min('value') }}</p>
-                                <p class="text-sm">Max: {{ $readings->max('value') }}</p>
-                                <p class="text-sm">Sensors: {{ $readings->count() }}</p>
-                            </div>
-                        </div>
-                        @endforeach
-                    </div>
-                </div>
-            </div>
-            @endif
-
-            <!-- Batch Summary -->
-            <div class="bg-white rounded-lg shadow mb-8">
-                <div class="p-6">
-                    <h2 class="text-xl font-bold mb-4">Batch History</h2>
-                    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-                        @foreach($batchSummary as $batchId => $batch)
-                        <div class="border rounded-lg p-4 {{ $batch['excursions'] > 0 ? 'border-red-200 bg-red-50' : 'border-green-200 bg-green-50' }}">
-                            <div class="flex justify-between items-start mb-2">
-                                <h3 class="text-lg font-semibold">{{ $batchId }}</h3>
-                                <span class="px-2 py-1 text-xs font-semibold rounded-full {{ $batch['excursions'] > 0 ? 'bg-red-100 text-red-800' : 'bg-green-100 text-green-800' }}">
-                                    {{ $batch['excursions'] > 0 ? $batch['excursions'] . ' Excursions' : 'Normal' }}
-                                </span>
-                            </div>
-                            <div class="space-y-2">
-                                <p class="text-sm text-gray-600">Time: {{ $batch['timestamp'] }}</p>
-                                <p class="text-sm text-gray-600">Readings: {{ $batch['total_readings'] }}</p>
-                                @foreach($batch['readings_by_type'] as $type => $data)
-                                <div class="text-sm">
-                                    <span class="capitalize">{{ $type }}:</span>
-                                    {{ round($data['avg_value'], 2) }}
-                                    @if($type === 'temperature')°C
-                                    @elseif($type === 'humidity')%
-                                    @else hPa
-                                    @endif
-                                    @if($data['excursions'] > 0)
-                                    <span class="text-red-600 ml-1">({{ $data['excursions'] }} exc.)</span>
-                                    @endif
-                                </div>
-                                @endforeach
-                            </div>
-                        </div>
-                        @endforeach
-                    </div>
-                </div>
-            </div>
-
-            <!-- Excursion Alerts -->
-            @if($excursions->isNotEmpty())
-            <div class="bg-red-50 border-l-4 border-red-500 p-4 mb-8 rounded-lg">
-                <div class="flex">
-                    <i class="fas fa-exclamation-triangle text-red-500 mr-3"></i>
-                    <div>
-                        <h3 class="text-red-800 font-medium">Excursions Detected</h3>
-                        @foreach($excursions as $batch)
-                        <div class="mt-2">
-                            <p class="text-red-700">
-                                Batch {{ $batch['batch_id'] }} ({{ Carbon\Carbon::parse($batch['timestamp'])->format('Y-m-d H:i:s') }}):
-                                {{ $batch['readings']->count() }} excursions
-                            </p>
-                        </div>
-                        @endforeach
-                    </div>
-                </div>
-            </div>
-            @endif
-
-            <!-- Charts -->
-            <div class="grid grid-cols-1 gap-6 mb-8">
-                @foreach(['temperature' => ['color' => '#ef4444', 'unit' => '°C'],
-                         'humidity' => ['color' => '#3b82f6', 'unit' => '%'],
-                         'pressure' => ['color' => '#22c55e', 'unit' => 'hPa']] as $type => $config)
-                <div class="bg-white rounded-lg shadow">
-                    <div class="p-6">
-                        <h2 class="text-xl font-bold mb-4 capitalize">{{ $type }} Trend</h2>
-                        <div class="h-[300px]">
-                            <canvas id="{{ $type }}Chart"></canvas>
-                        </div>
-                    </div>
-                </div>
-                @endforeach
-            </div>
-
-            <!-- Batch Statistics Chart -->
-            <div class="bg-white rounded-lg shadow mb-8">
-                <div class="p-6">
-                    <h2 class="text-xl font-bold mb-4">Batch Statistics</h2>
-                    <div class="h-[400px]">
-                        <canvas id="batchChart"></canvas>
-                    </div>
-                </div>
-            </div>
-        </div>
+@section('content')
+<div class="container mx-auto px-4 py-8">
+    <!-- Header -->
+    <div class="mb-8 bg-gradient-to-r from-blue-500 to-purple-600 rounded-lg shadow-lg p-6 text-white">
+        <h1 class="text-3xl font-bold">Unified Dashboard</h1>
+        <p class="text-xl mt-2">Welcome back, {{ Auth::user()->name }} ({{ Auth::user()->role }})</p>
     </div>
 
-<script>
-function createChart(elementId, data, label, color, unit) {
-    const ctx = document.getElementById(elementId).getContext('2d');
+    <!-- Overview Metrics -->
+    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 mb-8">
+        <!-- Users Metric -->
+        <div class="rounded-lg shadow-lg p-8 transition-all duration-300 hover:shadow-xl text-white bg-blue-500 border border-white/10">
+            <div class="flex justify-between items-center">
+                <h3 class="metric-title">Users</h3>
+                <svg class="w-8 h-8 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" 
+                          d="M12 4.354a4 4 0 110 5.292M15 21H3v-1a6 6 0 0112 0v1zm0 0h6v-1a6 6 0 00-9-5.197M13 7a4 4 0 11-8 0 4 4 0 018 0z"/>
+                </svg>
+            </div>
+            <p class="metric-value">20</p>
+            <p class="metric-subvalue">12 active</p>
+        </div>
+
+        <!-- Products Metric -->
+        <div class="rounded-lg shadow-lg p-8 transition-all duration-300 hover:shadow-xl text-white bg-green-500 border border-white/10">
+            <div class="flex justify-between items-center">
+                <h3 class="metric-title">Products</h3>
+                <svg class="w-8 h-8 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" 
+                          d="M20 7l-8-4-8 4m16 0l-8 4m8-4v10l-8 4m0-10L4 7m8 4v10M4 7v10l8 4"/>
+                </svg>
+            </div>
+            <p class="metric-value">12</p>
+            <p class="metric-subvalue">2 low stock</p>
+        </div>
+
+        <!-- Orders Metric -->
+        <div class="rounded-lg shadow-lg p-8 transition-all duration-300 hover:shadow-xl text-white bg-purple-500 border border-white/10">
+            <div class="flex justify-between items-center">
+                <h3 class="metric-title">Orders</h3>
+                <svg class="w-8 h-8 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" 
+                          d="M16 11V7a4 4 0 00-8 0v4M5 9h14l1 12H4L5 9z"/>
+                </svg>
+            </div>
+            <p class="metric-value">30</p>
+            <p class="metric-subvalue">12 pending</p>
+        </div>
+
+        <!-- Batches Metric -->
+        <div class="rounded-lg shadow-lg p-8 transition-all duration-300 hover:shadow-xl text-white bg-yellow-500 border border-white/10">
+            <div class="flex justify-between items-center">
+                <h3 class="metric-title">Batches</h3>
+                <svg class="w-8 h-8 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" 
+                          d="M19 11H5m14 0a2 2 0 012 2v6a2 2 0 01-2 2H5a2 2 0 01-2-2v-6a2 2 0 012-2m14 0V9a2 2 0 00-2-2M5 11V9a2 2 0 012-2m0 0V5a2 2 0 012-2h6a2 2 0 012 2v2M7 7h10"/>
+                </svg>
+            </div>
+            <p class="metric-value">15</p>
+            <p class="metric-subvalue">5 expiring soon</p>
+        </div>
+
+        <!-- Sensors Metric -->
+        <div class="rounded-lg shadow-lg p-8 transition-all duration-300 hover:shadow-xl text-white bg-red-500 border border-white/10">
+            <div class="flex justify-between items-center">
+                <h3 class="metric-title">Sensors</h3>
+                <svg class="w-8 h-8 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" 
+                          d="M9 3v2m6-2v2M9 19v2m6-2v2M5 9H3m2 6H3m18-6h-2m2 6h-2M7 19h10a2 2 0 002-2V7a2 2 0 00-2-2H7a2 2 0 00-2 2v10a2 2 0 002 2zM9 9h6v6H9V9z"/>
+                </svg>
+            </div>
+            <p class="metric-value">100</p>
+            <p class="metric-subvalue">50 active</p>
+        </div>
+
+        <!-- Add another metric card here if needed -->
+    </div>
+
     
-    new Chart(ctx, {
+</div>
+@endsection
+
+@section('scripts')
+<script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+<script>
+    // Orders Chart
+    var ordersCtx = document.getElementById('ordersChart').getContext('2d');
+    var ordersChart = new Chart(ordersCtx, {
         type: 'line',
         data: {
-            labels: data.map(d => d.timestamp),
+            labels: ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun'],
             datasets: [{
-                label: label,
-                data: data.map(d => ({
-                    x: d.timestamp,
-                    y: d.avg_value,
-                    min: d.min_value,
-                    max: d.max_value,
-                    batchId: d.batch_id
-                })),
-                borderColor: color,
-                backgroundColor: color + '20',
-                borderWidth: 2,
-                tension: 0.4,
-                fill: true
+                label: 'Orders',
+                data: [12, 19, 3, 5, 2, 3],
+                borderColor: 'rgb(75, 192, 192)',
+                tension: 0.1
             }]
         },
         options: {
             responsive: true,
-            maintainAspectRatio: false,
-            interaction: {
-                intersect: false,
-                mode: 'index'
-            },
             plugins: {
                 legend: {
-                    position: 'top'
+                    position: 'top',
                 },
-                tooltip: {
-                    callbacks: {
-                        label: function(context) {
-                            const datapoint = context.raw;
-                            return [
-                                `Average: ${datapoint.y.toFixed(2)}${unit}`,
-                                `Min: ${datapoint.min.toFixed(2)}${unit}`,
-                                `Max: ${datapoint.max.toFixed(2)}${unit}`,
-                                `Batch: ${datapoint.batchId}`
-                            ];
-                        }
-                    }
-                }
-            },
-            scales: {
-                x: {
-                    type: 'time',
-                    time: {
-                        unit: 'minute',
-                        displayFormats: {
-                            minute: 'MMM D, HH:mm'
-                        }
-                    },
-                    title: {
-                        display: true,
-                        text: 'Time'
-                    }
-                },
-                y: {
-                    title: {
-                        display: true,
-                        text: label
-                    },
-                    ticks: {
-                        callback: function(value) {
-                            return value + unit;
-                        }
-                    }
+                title: {
+                    display: true,
+                    text: 'Monthly Orders'
                 }
             }
         }
     });
-}
 
-// Initialize batch statistics chart
-function createBatchChart(data) {
-    const ctx = document.getElementById('batchChart').getContext('2d');
-    const batchIds = Object.keys(data);
-    
-    new Chart(ctx, {
+    // Users Chart
+    var usersCtx = document.getElementById('usersChart').getContext('2d');
+    var usersChart = new Chart(usersCtx, {
         type: 'bar',
         data: {
-            labels: batchIds,
-            datasets: [
-                {
-                    label: 'Temperature (°C)',
-                    data: batchIds.map(id => data[id].readings_by_type.temperature.avg_value),
-                    backgroundColor: '#ef444480',
-                    borderColor: '#ef4444',
-                    borderWidth: 1
-                },
-                {
-                    label: 'Humidity (%)',
-                    data: batchIds.map(id => data[id].readings_by_type.humidity.avg_value),
-                    backgroundColor: '#3b82f680',
-                    borderColor: '#3b82f6',
-                    borderWidth: 1
-                },
-                {
-                    label: 'Pressure (hPa)',
-                    data: batchIds.map(id => data[id].readings_by_type.pressure.avg_value),
-                    backgroundColor: '#22c55e80',
-                    borderColor: '#22c55e',
-                    borderWidth: 1
-                }
-            ]
+            labels: ['Active', 'Inactive', 'New'],
+            datasets: [{
+                label: 'Users',
+                data: [12, 8, 3],
+                backgroundColor: [
+                    'rgba(75, 192, 192, 0.2)',
+                    'rgba(255, 99, 132, 0.2)',
+                    'rgba(54, 162, 235, 0.2)'
+                ],
+                borderColor: [
+                    'rgb(75, 192, 192)',
+                    'rgb(255, 99, 132)',
+                    'rgb(54, 162, 235)'
+                ],
+                borderWidth: 1
+            }]
         },
         options: {
             responsive: true,
-            maintainAspectRatio: false,
             plugins: {
                 legend: {
-                    position: 'top'
-                }
-            },
-            scales: {
-                y: {
-                    beginAtZero: false
+                    position: 'top',
+                },
+                title: {
+                    display: true,
+                    text: 'User Status'
                 }
             }
         }
     });
-}
-
-document.addEventListener('DOMContentLoaded', function() {
-    const chartData = @json($chartData);
-    const batchSummary = @json($batchSummary);
-    
-    createChart('temperatureChart', chartData.temperature, 'Temperature', '#ef4444', '°C');
-    createChart('humidityChart', chartData.humidity, 'Humidity', '#3b82f6', '%');
-    createChart('pressureChart', chartData.pressure, 'Pressure', '#22c55e', ' hPa');
-    createBatchChart(batchSummary);
-});
 </script>
-
-</body>
-</html>
+@endsection
