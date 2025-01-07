@@ -21,7 +21,13 @@ class UserController extends Controller
         try {
             
             $users = $this->userService->getAllUsers();
-            Log::info($users[0]);
+            if ($users && isset($users['error'])) {
+                Log::error('Failed to fetch users from API: ' . $users['error']);
+                return view('users.index', [
+                    'users' => [],
+                    'error' => 'Failed to load users. Please try again later.'
+                ]);
+            }
             return view('users.index', compact('users'));
         } catch (Exception $e) {
             Log::error('Error fetching users: ' . $e->getMessage());
@@ -32,6 +38,16 @@ class UserController extends Controller
     public function create()
     {
         return view('users.create');
+    }
+
+    public function getLogisticsUsers()
+    {
+        try {
+            $users = $this->userService->getUsersByRole('logistics');
+            return response()->json($users);
+        } catch (Exception $e) {
+            return response()->json(['error' => $e->getMessage()], 500);
+        }
     }
 
     public function store(Request $request)
@@ -95,20 +111,26 @@ class UserController extends Controller
                 'name' => 'required|string|max:255',
                 'email' => 'required|email|max:255',
                 'phone_number' => 'required|string|max:20',
-                'role' => 'required|string|in:user,admin,manager',
+                'role' => 'required|string|in:regulator,manufacturer,logistics,vendor',
                 'address' => 'required|string',
                 'status' => 'required|string|in:active,inactive,pending',
             ]);
 
-            if ($request->hasFile('compliance_document')) {
-                $path = $request->file('compliance_document')->store('compliance_documents', 'public');
-                $validated['compliance_document'] = $path;
+            $result = $this->userService->updateUser($id, $validated);
+            
+            if (isset($result['blockchain_sync_failed'])) {
+                return redirect()->route('users.index')
+                    ->with('warning', 'User updated but blockchain sync failed. Will retry sync later.')
+                    ->with('success', 'User information updated successfully');
             }
 
-            $user = $this->userService->updateUser($id, $validated);
-            return redirect()->route('users.index')->with('success', 'User updated successfully');
+            return redirect()->route('users.index')
+                ->with('success', 'User updated successfully');
         } catch (Exception $e) {
-            return redirect()->back()->with('error', $e->getMessage())->withInput();
+            Log::error('User update failed: ' . $e->getMessage());
+            return redirect()->back()
+                ->with('error', 'Failed to update user: ' . $e->getMessage())
+                ->withInput();
         }
     }
 

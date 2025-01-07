@@ -61,11 +61,13 @@
                         <label for="status" class="block text-sm font-medium text-gray-700">Status</label>
                         <select name="status" id="status" 
                                 class="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-blue-500 focus:ring focus:ring-blue-200">
-                            <option value="active" {{ old('status') == 'active' ? 'selected' : '' }}>Active</option>
+                            <option value="pending" {{ old('status') == 'pending' ? 'selected' : '' }}>Pending</option>
+                            <option value="for_approval" {{ old('status') == 'for_approval' ? 'selected' : '' }}>For Approval</option>
+                            <option value="approved" {{ old('status') == 'approved' ? 'selected' : '' }}>Approved</option>
+                            <option value="rejected" {{ old('status') == 'rejected' ? 'selected' : '' }}>Rejected</option>
                             <option value="inactive" {{ old('status') == 'inactive' ? 'selected' : '' }}>Inactive</option>
                         </select>
                     </div>
-                </div>
 
                 <div>
                     <label for="notes" class="block text-sm font-medium text-gray-700">Notes</label>

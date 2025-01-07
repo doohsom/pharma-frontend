@@ -116,13 +116,15 @@ function formatDate(dateString) {
     });
 }
 
+// Make sure the getStatusClass function handles 'pending' status
 function getStatusClass(status) {
     const classes = {
         'created': 'bg-gray-100 text-gray-800',
         'waiting_approval': 'bg-yellow-100 text-yellow-800',
         'approved': 'bg-green-100 text-green-800',
         'active': 'bg-blue-100 text-blue-800',
-        'inactive': 'bg-red-100 text-red-800'
+        'inactive': 'bg-red-100 text-red-800',
+        'pending': 'bg-yellow-100 text-yellow-800' // Added pending status
     };
     return classes[status] || 'bg-gray-100 text-gray-800';
 }
@@ -160,11 +162,29 @@ function formatRequirement(requirement) {
 
 async function openDetailsModal(productId) {
     try {
-        const response = await fetch(`http://localhost:5050/api/products/${productId}`);
-        if (!response.ok) throw new Error('Failed to fetch product details');
+        const response = await fetch(`/products/${productId}`, {
+            headers: {
+                'Accept': 'application/json',
+                'X-Requested-With': 'XMLHttpRequest'
+            }
+        });
         
-        const product = await response.json();
+        if (!response.ok) {
+            throw new Error('Failed to fetch product details');
+        }
         
+        const data = await response.json();
+        console.log('Raw API response:', data); // Debug log
+        
+        // Extract product from the array's first element
+        const product = data[0].product;
+        const user = data[0].user;
+        console.log('Extracted product:', product); // Debug log
+
+        if (!product) {
+            throw new Error('Product data not found');
+        }
+
         // Update modal content
         document.getElementById('modalProductName').textContent = product.name;
         document.getElementById('modalProductId').textContent = product.id;
@@ -173,7 +193,7 @@ async function openDetailsModal(productId) {
         document.getElementById('modalProductExpiryDate').textContent = formatDate(product.expiryDate);
         document.getElementById('modalProductPrice').textContent = `$${product.price.toFixed(2)}`;
         document.getElementById('modalProductCreatedAt').textContent = formatDate(product.createdAt);
-        document.getElementById('modalProductUserId').textContent = product.userId;
+        document.getElementById('modalProductUserId').textContent = user.name;
         document.getElementById('modalProductApprovedBy').textContent = product.approvedBy || 'N/A';
         document.getElementById('modalProductApprovalDate').textContent = formatDate(product.approvalDate);
         document.getElementById('modalProductNotes').textContent = product.notes || 'No notes available';
@@ -190,12 +210,16 @@ async function openDetailsModal(productId) {
             .join('');
 
         // Show modal
-        document.getElementById('productDetailsModal').classList.remove('hidden');
+        const modal = document.getElementById('productDetailsModal');
+        modal.classList.remove('hidden');
+        console.log('Modal should now be visible'); // Debug log
+        
     } catch (error) {
-        toastr.error('Failed to load product details');
-        console.error('Error:', error);
+        console.error('Error in openDetailsModal:', error);
+        alert('Failed to load product details');
     }
 }
+
 
 function closeDetailsModal() {
     document.getElementById('productDetailsModal').classList.add('hidden');

@@ -31,7 +31,7 @@
 <div class="container mx-auto px-4 py-8">
     <!-- Header -->
     <div class="mb-8 bg-gradient-to-r from-blue-500 to-purple-600 rounded-lg shadow-lg p-6 text-white">
-        <h1 class="text-3xl font-bold">Unified Dashboard</h1>
+        <h1 class="text-3xl font-bold"> Dashboard</h1>
         <p class="text-xl mt-2">Welcome back, {{ Auth::user()->name }} ({{ Auth::user()->role }})</p>
     </div>
 

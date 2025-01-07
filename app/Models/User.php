@@ -20,8 +20,6 @@ class User extends Authenticatable
         'address',
         'status',
         'created_by',
-        'api_synced',
-        'api_sync_error'
     ];
 
     protected $hidden = [
@@ -39,8 +37,8 @@ class User extends Authenticatable
             'phoneNumber' => $this->phone_number,
             'role' => $this->role,
             'address' => $this->address,
-            'createdBy' => $this->created_by,
-            'status' => $this->status
+            'createdBy' => $this->blockchain_id,
+            //'status' => $this->status
         ];
     }
 }

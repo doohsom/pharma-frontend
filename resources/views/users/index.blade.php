@@ -26,7 +26,7 @@
                 </tr>
             </thead>
             <tbody class="divide-y divide-gray-200">
-                @foreach($users as $user)
+                @forelse($users as $user)
                 <tr>
                     <td class="px-6 py-4">{{ $user['name'] }}</td>
                     <td class="px-6 py-4">{{ $user['email'] }}</td>
@@ -39,14 +39,11 @@
                     <td class="px-6 py-4">
                         <a href="{{ route('users.show', $user['id']) }}" class="text-blue-600 hover:text-blue-900 mr-3">View</a>
                         <a href="{{ route('users.edit', $user['id']) }}" class="text-green-600 hover:text-green-900 mr-3">Edit</a>
-                        <form action="{{ route('users.destroy', $user['id']) }}" method="POST" class="inline">
-                            @csrf
-                            @method('DELETE')
-                            <button type="submit" class="text-red-600 hover:text-red-900" onclick="return confirm('Are you sure?')">Delete</button>
-                        </form>
                     </td>
                 </tr>
-                @endforeach
+                @empty
+                <tr><td> There is nothing here</td></tr>
+                @endforelse
             </tbody>
         </table>
     </div>

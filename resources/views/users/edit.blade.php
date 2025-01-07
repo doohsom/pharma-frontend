@@ -31,16 +31,16 @@
 
             <div>
                 <label for="phone_number" class="block text-sm font-medium text-gray-700">Phone Number</label>
-                <input type="tel" name="phoneNumber" id="phoneNumber" value="{{ $user['phoneNumber'] }}" class="mt-1 block w-full rounded-md border-gray-300 shadow-sm" required>
+                <input type="tel" name="phone_number" id="phoneNumber" value="{{ $user['phone_number'] }}" class="mt-1 block w-full rounded-md border-gray-300 shadow-sm" required>
             </div>
 
             <div>
                 <label for="role" class="block text-sm font-medium text-gray-700">Role</label>
                 <select name="role" id="role" class="mt-1 block w-full rounded-md border-gray-300 shadow-sm">
-                    <option value="user" {{ $user['role'] === 'manufacturer' ? 'selected' : '' }}>Manufacturer</option>
-                    <option value="admin" {{ $user['role'] === 'logistics' ? 'selected' : '' }}>Logistics</option>
-                    <option value="manager" {{ $user['role'] === 'vendor' ? 'selected' : '' }}>Vendor</option>
-                    <option value="manager" {{ $user['role'] === 'regulator' ? 'selected' : '' }}>Regulator</option>
+                    <option value="manufacturer" {{ $user['role'] === 'manufacturer' ? 'selected' : '' }}>Manufacturer</option>
+                    <option value="logistics" {{ $user['role'] === 'logistics' ? 'selected' : '' }}>Logistics</option>
+                    <option value="vendor" {{ $user['role'] === 'vendor' ? 'selected' : '' }}>Vendor</option>
+                    <option value="regulator" {{ $user['role'] === 'regulator' ? 'selected' : '' }}>Regulator</option>
                 </select>
             </div>
 
